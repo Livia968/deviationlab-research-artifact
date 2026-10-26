@@ -37,7 +37,7 @@ py -3.13 -m venv .venv
 
 Open **http://127.0.0.1:7891/**. Keep the terminal open while using the page. Press Ctrl+C in that terminal to stop it. Do not double-click `index.html`: that opens an HTML file without the analysis server.
 
-The first dependency installation needs internet access. The application uses the bundled weights for inference and does not send images to an LLM provider. The tested platform is macOS with Python 3.13; the Windows and Linux instructions are provided for portability but have not been independently tested. FFmpeg and the Python environment are not included in the ZIP.
+The first dependency installation needs internet access. The application uses the bundled weights for inference and does not send images to an LLM provider. The tested platform is macOS with Python 3.13; the Windows and Linux instructions are provided for portability but have not been independently tested. FFmpeg and the Python environment are not included in the ZIP. The first analysis also loads the model libraries and weights, so allow extra time before expecting progress.
 
 ## Run a first analysis
 

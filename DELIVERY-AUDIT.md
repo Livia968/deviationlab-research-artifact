@@ -8,6 +8,7 @@ Release scope: private editorial prototype, 26 October 2026. A test marked PASS 
 |---|---|---|
 | Server and workflow unit tests | PASS: 24 tests, comprising 19 server tests and 5 contract tests | Test sources in `web/tests/` and `proposal-pipeline/tests/` |
 | Real image/video execution | PASS: 6 JPGs and 6 MP4s; 1 frame per image and 3 samples per video | [functional-audit.json](functional-audit.json) |
+| Fresh dependency installation | PASS: new isolated Python environment; `pip check` reports no broken requirements | Environment recorded in `functional-audit.json` |
 | Model identity | PASS: 6 classifier checkpoints and 3 localizers match their registries | `python tools/verify.py` |
 | Browser interaction | PASS: kitchen/front video analysis, manual cashier region, timestamp selection and review save | Manual browser check on the local application |
 | Browser exports | PASS: inspected a six-frame JSON/CSV export with 18 model-check rows and saved review | Manual inspection of browser downloads |
@@ -46,6 +47,8 @@ For mask coverage, the saved correct/total count is 43/47; for cashier occupancy
 
 ## Tested environment and limits
 
-The application was tested in an existing macOS Python 3.13 environment with PyTorch 2.14.1, torchvision 0.29.1, Ultralytics 8.4.174 and FFmpeg. A GPU is not required by this implementation. Fresh dependency installation, Windows/Linux execution, public hosting, concurrent multi-user load and long-running service operation have not been validated in this release.
+The application was tested in both the development environment and a newly created virtual environment on macOS 26.6.2 (arm64), Python 3.13.6, with PyTorch 2.14.1, torchvision 0.29.1, Ultralytics 8.4.174 and FFmpeg. The new environment installed `requirements.txt`, passed `pip check`, all 24 unit tests and all twelve real-inference cases. Cached download files were reused where available; installed packages were not copied from the development environment. `functional-audit.json` records the direct dependency versions.
+
+The first model import exceeded the smoke client's original 30-second request timeout, although the server completed the job. The delivered smoke client allows 120 seconds per request and passed the full rerun. Allow extra time for the first analysis. A GPU is not required by this implementation. Windows/Linux execution, public hosting, concurrent multi-user load and long-running service operation have not been validated in this release.
 
 Independent evaluation of localization and classification on new stores/cameras remains pending. Full retraining cannot be reproduced from this repository alone because the original restricted training datasets are absent. No cloud deployment or manuscript modification is part of this release.

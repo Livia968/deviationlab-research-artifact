@@ -6,7 +6,7 @@
       "file": "kitchen-mask.jpg",
       "state": "completed",
       "frames": 1,
-      "seconds": 0.51,
+      "seconds": 0.52,
       "review_saved": true,
       "statuses": [
         {
@@ -44,7 +44,7 @@
       "file": "kitchen-workwear.jpg",
       "state": "completed",
       "frames": 1,
-      "seconds": 0.51,
+      "seconds": 0.52,
       "review_saved": true,
       "statuses": [
         {
@@ -58,7 +58,7 @@
       "file": "kitchen-workwear.mp4",
       "state": "completed",
       "frames": 3,
-      "seconds": 1.52,
+      "seconds": 1.55,
       "review_saved": true,
       "statuses": [
         {
@@ -96,7 +96,7 @@
       "file": "kitchen-headwear.mp4",
       "state": "completed",
       "frames": 3,
-      "seconds": 1.52,
+      "seconds": 1.53,
       "review_saved": true,
       "statuses": [
         {
@@ -120,7 +120,7 @@
       "file": "front-tables.jpg",
       "state": "completed",
       "frames": 1,
-      "seconds": 0.51,
+      "seconds": 0.52,
       "review_saved": true,
       "statuses": [
         {
@@ -134,7 +134,7 @@
       "file": "front-tables.mp4",
       "state": "completed",
       "frames": 3,
-      "seconds": 2.03,
+      "seconds": 1.54,
       "review_saved": true,
       "statuses": [
         {
@@ -158,7 +158,7 @@
       "file": "front-bread.jpg",
       "state": "completed",
       "frames": 1,
-      "seconds": 0.51,
+      "seconds": 0.52,
       "review_saved": true,
       "statuses": [
         {
@@ -172,7 +172,7 @@
       "file": "front-bread.mp4",
       "state": "completed",
       "frames": 3,
-      "seconds": 1.02,
+      "seconds": 1.03,
       "review_saved": true,
       "statuses": [
         {
@@ -196,7 +196,7 @@
       "file": "front-cashier.jpg",
       "state": "completed",
       "frames": 1,
-      "seconds": 1.01,
+      "seconds": 1.03,
       "review_saved": true,
       "statuses": [
         {
@@ -210,7 +210,7 @@
       "file": "front-cashier.mp4",
       "state": "completed",
       "frames": 3,
-      "seconds": 2.03,
+      "seconds": 2.05,
       "review_saved": true,
       "statuses": [
         {
@@ -232,5 +232,23 @@
     }
   ],
   "model": "mobilenetv3-roi-v2",
-  "cashier_test_roi": "arbitrary central geometry for functional test only"
+  "cashier_test_roi": "arbitrary central geometry for functional test only",
+  "producing_test": "tools/smoke.py",
+  "environment": {
+    "installation": "new isolated venv; pip install -r requirements.txt; cached wheels reused where available",
+    "python": "3.13.6",
+    "system": "Darwin",
+    "macos": "26.6.2",
+    "architecture": "arm64",
+    "packages": {
+      "torch": "2.14.1",
+      "torchvision": "0.29.1",
+      "ultralytics": "8.4.174",
+      "Pillow": "12.3.0",
+      "numpy": "2.5.4",
+      "opencv-python": "5.0.0.93",
+      "polars": "2.1.0"
+    },
+    "scope": "fresh installation and local CPU inference; Windows/Linux not tested"
+  }
 }

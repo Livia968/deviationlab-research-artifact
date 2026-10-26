@@ -25,7 +25,7 @@ def main():
     def request(path, payload=None):
         data = json.dumps(payload).encode() if payload is not None else None
         req = Request(base + path, data=data, headers={'Content-Type':'application/json'})
-        with opener.open(req, timeout=30) as response:
+        with opener.open(req, timeout=120) as response:
             if urlsplit(response.url).hostname not in ('127.0.0.1', 'localhost'):
                 raise RuntimeError('Unexpected server redirect')
             return json.load(response)
