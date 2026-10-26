@@ -1,0 +1,550 @@
+{
+  "target": "workwear",
+  "architecture": "torchvision.mobilenet_v3_small",
+  "roi": "employee_upper_body",
+  "source_dataset": "data/final/uniform-source200-017/classification",
+  "source_dataset_sha256": "ef1f8219052fb7c1428a71312532ee8923fa8fab75557caaf9384ecdc4a45543",
+  "pretrained_source": "torchvision MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+  "pretrained_sha256": "047dcff4addef86ea5bc2eff13c9614dc11f47ab1160d0a71a25e7db994f4e1f",
+  "weights": "mobilenetv3-small.pt",
+  "weights_sha256": "e517ab93202878ba5f96a841ec7bc2cdffcd6c04d381bb8290c5ac188e1840a9",
+  "class_names": [
+    "ordinary_clothes",
+    "workwear_visible"
+  ],
+  "judgment_by_class_index": [
+    "deviation",
+    "no_deviation"
+  ],
+  "preprocessing": {
+    "resize": 256,
+    "crop": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "decision_threshold": 0.6,
+  "training": {
+    "seed": 20261026,
+    "class_balancing": "WeightedRandomSampler with equal expected class mass",
+    "head_epochs": 4,
+    "finetune_epochs": 4,
+    "head_lr": 0.001,
+    "finetune_lr": 0.0001,
+    "batch_size": 32,
+    "selected_checkpoint": "highest development validation balanced accuracy",
+    "inventory": {
+      "train": {
+        "ordinary_clothes": 141,
+        "workwear_visible": 245
+      },
+      "val": {
+        "ordinary_clothes": 26,
+        "workwear_visible": 36
+      }
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "phase": "head",
+        "train_loss": 0.6279963754464926,
+        "train_accuracy": 0.6321243523316062,
+        "val_loss": 0.4055523410920174,
+        "val_accuracy": 0.8548387096774194,
+        "val_balanced_accuracy": 0.842948717948718
+      },
+      {
+        "epoch": 2,
+        "phase": "head",
+        "train_loss": 0.5071360824021651,
+        "train_accuracy": 0.7512953367875648,
+        "val_loss": 0.4750163612827178,
+        "val_accuracy": 0.7741935483870968,
+        "val_balanced_accuracy": 0.7361111111111112
+      },
+      {
+        "epoch": 3,
+        "phase": "head",
+        "train_loss": 0.5546155924006447,
+        "train_accuracy": 0.727979274611399,
+        "val_loss": 0.4386119246482849,
+        "val_accuracy": 0.8225806451612904,
+        "val_balanced_accuracy": 0.8418803418803419
+      },
+      {
+        "epoch": 4,
+        "phase": "head",
+        "train_loss": 0.4930513300426266,
+        "train_accuracy": 0.7875647668393783,
+        "val_loss": 0.638358477623232,
+        "val_accuracy": 0.6774193548387096,
+        "val_balanced_accuracy": 0.7222222222222222
+      },
+      {
+        "epoch": 5,
+        "phase": "last_block",
+        "train_loss": 0.4273349035898021,
+        "train_accuracy": 0.8186528497409327,
+        "val_loss": 0.41889977166729586,
+        "val_accuracy": 0.8709677419354839,
+        "val_balanced_accuracy": 0.8514957264957265
+      },
+      {
+        "epoch": 6,
+        "phase": "last_block",
+        "train_loss": 0.418632063840955,
+        "train_accuracy": 0.810880829015544,
+        "val_loss": 0.43301774128790826,
+        "val_accuracy": 0.8709677419354839,
+        "val_balanced_accuracy": 0.8514957264957265
+      },
+      {
+        "epoch": 7,
+        "phase": "last_block",
+        "train_loss": 0.3893660343990425,
+        "train_accuracy": 0.8471502590673575,
+        "val_loss": 0.4117605753483311,
+        "val_accuracy": 0.8548387096774194,
+        "val_balanced_accuracy": 0.8376068376068375
+      },
+      {
+        "epoch": 8,
+        "phase": "last_block",
+        "train_loss": 0.33672658504599734,
+        "train_accuracy": 0.9041450777202072,
+        "val_loss": 0.4213039134779284,
+        "val_accuracy": 0.8548387096774194,
+        "val_balanced_accuracy": 0.8376068376068375
+      }
+    ]
+  },
+  "validation": {
+    "status": "development_validation_only_not_independent_test",
+    "accuracy": 0.8709677419354839,
+    "balanced_accuracy": 0.8514957264957265,
+    "per_class": {
+      "ordinary_clothes": {
+        "precision": 0.95,
+        "recall": 0.7307692307692307,
+        "f1": 0.8260869565217392,
+        "support": 26
+      },
+      "workwear_visible": {
+        "precision": 0.8333333333333334,
+        "recall": 0.9722222222222222,
+        "f1": 0.8974358974358975,
+        "support": 36
+      }
+    },
+    "confusion": {
+      "ordinary_clothes": {
+        "ordinary_clothes": 19,
+        "workwear_visible": 7
+      },
+      "workwear_visible": {
+        "ordinary_clothes": 1,
+        "workwear_visible": 35
+      }
+    },
+    "selective": [
+      {
+        "threshold": 0.5,
+        "answered": 62,
+        "total": 62,
+        "coverage": 1.0,
+        "accuracy": 0.8709677419354839
+      },
+      {
+        "threshold": 0.55,
+        "answered": 60,
+        "total": 62,
+        "coverage": 0.967741935483871,
+        "accuracy": 0.8666666666666667
+      },
+      {
+        "threshold": 0.6,
+        "answered": 56,
+        "total": 62,
+        "coverage": 0.9032258064516129,
+        "accuracy": 0.8571428571428571
+      },
+      {
+        "threshold": 0.65,
+        "answered": 51,
+        "total": 62,
+        "coverage": 0.8225806451612904,
+        "accuracy": 0.8431372549019608
+      },
+      {
+        "threshold": 0.7,
+        "answered": 49,
+        "total": 62,
+        "coverage": 0.7903225806451613,
+        "accuracy": 0.8571428571428571
+      },
+      {
+        "threshold": 0.75,
+        "answered": 42,
+        "total": 62,
+        "coverage": 0.6774193548387096,
+        "accuracy": 0.9047619047619048
+      },
+      {
+        "threshold": 0.8,
+        "answered": 35,
+        "total": 62,
+        "coverage": 0.5645161290322581,
+        "accuracy": 0.9142857142857143
+      },
+      {
+        "threshold": 0.85,
+        "answered": 25,
+        "total": 62,
+        "coverage": 0.4032258064516129,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.9,
+        "answered": 20,
+        "total": 62,
+        "coverage": 0.3225806451612903,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.95,
+        "answered": 14,
+        "total": 62,
+        "coverage": 0.22580645161290322,
+        "accuracy": 1.0
+      }
+    ],
+    "class_names": [
+      "ordinary_clothes",
+      "workwear_visible"
+    ],
+    "judgment_by_class_index": [
+      "deviation",
+      "no_deviation"
+    ],
+    "predictions": [
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.7660931944847107
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "workwear_visible",
+        "confidence": 0.7364732027053833
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.6318689584732056
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.9736011624336243
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.6717947125434875
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "workwear_visible",
+        "confidence": 0.8406143188476562
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.7906721234321594
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "workwear_visible",
+        "confidence": 0.8348995447158813
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "workwear_visible",
+        "confidence": 0.7224329113960266
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.837385356426239
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.9534263014793396
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "workwear_visible",
+        "confidence": 0.7314853072166443
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.9242134094238281
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.5583615899085999
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.8827695846557617
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.7276922464370728
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.8668616414070129
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.7775187492370605
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.7465105652809143
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "workwear_visible",
+        "confidence": 0.8037009835243225
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.631862998008728
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "workwear_visible",
+        "confidence": 0.6720151901245117
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.8442395925521851
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.9024277329444885
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.5997142195701599
+      },
+      {
+        "truth": "ordinary_clothes",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.5497865080833435
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9759647250175476
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.7454102039337158
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.7550501823425293
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.844887375831604
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.8304422497749329
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9501639604568481
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9058314561843872
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9492629170417786
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.953612744808197
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.7896370887756348
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9684426784515381
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.8164011240005493
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.985076367855072
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9388033747673035
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.568154513835907
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.5553052425384521
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.8392052054405212
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.7092707753181458
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.6237651705741882
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.7794158458709717
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.6151946187019348
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.5268783569335938
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.8509926199913025
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "ordinary_clothes",
+        "confidence": 0.763909101486206
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9500569105148315
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9636862277984619
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.6387001872062683
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9698696136474609
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9516543745994568
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.8531671166419983
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9807189702987671
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9209727048873901
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9612998366355896
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.9794188737869263
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.8179705142974854
+      },
+      {
+        "truth": "workwear_visible",
+        "predicted": "workwear_visible",
+        "confidence": 0.8543481826782227
+      }
+    ]
+  },
+  "limitation": "Assistant-reviewed development crops; ambiguous crops were withheld."
+}

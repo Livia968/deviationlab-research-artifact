@@ -1,0 +1,183 @@
+{
+  "version": "mobilenetv3-roi-v2",
+  "architecture": "torchvision.mobilenet_v3_small",
+  "status": "trained_development_weights_pending_independent_evaluation",
+  "targets": {
+    "bread_display_gaps": {
+      "weights": "bread_display_gaps/mobilenetv3-small.pt",
+      "weights_sha256": "49f467cd3a05da9195f264d4ee9b00bc80a82a944e28c013ec0bb039ce1ab455",
+      "class_names": [
+        "full",
+        "underfilled"
+      ],
+      "judgment_by_class_index": [
+        "no_deviation",
+        "deviation"
+      ],
+      "decision_threshold": 0.6,
+      "preprocessing": {
+        "resize": 256,
+        "crop": 224,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "roi": "bread_display",
+      "validation_status": "development_validation_only_not_independent_test"
+    },
+    "cashier_occupancy": {
+      "weights": "cashier_occupancy/mobilenetv3-small.pt",
+      "weights_sha256": "68412f8b51f87ba0528974a99e4e63f923f14f9bf730ce5d9e1b412092528496",
+      "class_names": [
+        "empty",
+        "occupied"
+      ],
+      "judgment_by_class_index": [
+        "deviation",
+        "no_deviation"
+      ],
+      "decision_threshold": 0.6,
+      "preprocessing": {
+        "resize": 256,
+        "crop": 224,
+        "interpolation": "bilinear",
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "roi": "user_specified_employee_work_area",
+      "validation_status": "development_validation_only_not_independent_test"
+    },
+    "head_covering": {
+      "weights": "head_covering/mobilenetv3-small.pt",
+      "weights_sha256": "9d80a183117e6abc1864ac1b5cfe6982e038c95c6ce498b9e3bf155cb9d3ced5",
+      "class_names": [
+        "cap_absent",
+        "cap_present"
+      ],
+      "judgment_by_class_index": [
+        "deviation",
+        "no_deviation"
+      ],
+      "decision_threshold": 0.6,
+      "preprocessing": {
+        "resize": 256,
+        "crop": 224,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "roi": "employee_head",
+      "validation_status": "development_validation_only_not_independent_test"
+    },
+    "mask_coverage": {
+      "weights": "mask_coverage/mobilenetv3-small.pt",
+      "weights_sha256": "7451c69a5bb3493a550db91365484a563448dade31ca2fd94dc6786c3b265400",
+      "class_names": [
+        "covered",
+        "uncovered"
+      ],
+      "judgment_by_class_index": [
+        "no_deviation",
+        "deviation"
+      ],
+      "decision_threshold": 0.6,
+      "preprocessing": {
+        "resize": 366,
+        "crop": 320,
+        "interpolation": "bicubic",
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "roi": "employee_face",
+      "validation_status": "development_validation_only_not_independent_test"
+    },
+    "table_clearance": {
+      "weights": "table_clearance/mobilenetv3-small.pt",
+      "weights_sha256": "41e550e5c0fabb9d1feeff2455470482cb5a74d9bb0c46a5f36a5d86a2c8a602",
+      "class_names": [
+        "clean",
+        "uncleared"
+      ],
+      "judgment_by_class_index": [
+        "no_deviation",
+        "deviation"
+      ],
+      "decision_threshold": 0.6,
+      "preprocessing": {
+        "resize": 256,
+        "crop": 224,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "roi": "dining_table_surface",
+      "validation_status": "development_validation_only_not_independent_test"
+    },
+    "workwear": {
+      "weights": "workwear/mobilenetv3-small.pt",
+      "weights_sha256": "e517ab93202878ba5f96a841ec7bc2cdffcd6c04d381bb8290c5ac188e1840a9",
+      "class_names": [
+        "ordinary_clothes",
+        "workwear_visible"
+      ],
+      "judgment_by_class_index": [
+        "deviation",
+        "no_deviation"
+      ],
+      "decision_threshold": 0.6,
+      "preprocessing": {
+        "resize": 256,
+        "crop": 224,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "roi": "employee_upper_body",
+      "validation_status": "development_validation_only_not_independent_test"
+    }
+  }
+}

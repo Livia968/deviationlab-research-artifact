@@ -1,0 +1,39 @@
+{
+  "version": "proposal-six-target-v1",
+  "scenes": {
+    "kitchen": ["head_covering", "mask_coverage", "workwear"],
+    "front_of_house": ["table_clearance", "bread_display_gaps", "cashier_occupancy"]
+  },
+  "targets": {
+    "head_covering": {
+      "roi": "employee_head",
+      "criterion": "A hat or hairnet covers the head as required.",
+      "mobilenetv3_labels": ["deviation", "no_deviation", "uncertain"]
+    },
+    "mask_coverage": {
+      "roi": "employee_face",
+      "criterion": "The mask covers both nose and mouth.",
+      "mobilenetv3_labels": ["deviation", "no_deviation", "uncertain"]
+    },
+    "workwear": {
+      "roi": "employee_upper_body",
+      "criterion": "Workwear or an apron is visible.",
+      "mobilenetv3_labels": ["deviation", "no_deviation", "uncertain"]
+    },
+    "table_clearance": {
+      "roi": "dining_table_surface",
+      "criterion": "Wrappers, plastic bags, or other garbage remain on the table.",
+      "mobilenetv3_labels": ["deviation", "no_deviation", "uncertain"]
+    },
+    "bread_display_gaps": {
+      "roi": "bread_display",
+      "criterion": "Visibly substantial empty gaps indicate a need for replenishment.",
+      "mobilenetv3_labels": ["deviation", "no_deviation", "uncertain"]
+    },
+    "cashier_occupancy": {
+      "roi": "user_specified_employee_work_area",
+      "criterion": "No employee is visible within the marked employee work area.",
+      "mobilenetv3_labels": ["deviation", "no_deviation", "uncertain"]
+    }
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "target": "cashier_occupancy",
+  "model_version": "mobilenetv3-roi-v2",
+  "architecture": "torchvision.mobilenet_v3_small",
+  "roi": "user_specified_employee_work_area",
+  "source_dataset": "data/intermediate/cashier_vacancy_real_controls/classifier_dataset",
+  "source_dataset_selected_classes_sha256": "420b9e6d09febcc8b6cde7f3b023552d3f46f0a9ae93400b79c2a1c8f26152d3",
+  "pretrained_source": "torchvision MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+  "pretrained_sha256": "047dcff4addef86ea5bc2eff13c9614dc11f47ab1160d0a71a25e7db994f4e1f",
+  "weights": "mobilenetv3-small.pt",
+  "weights_sha256": "68412f8b51f87ba0528974a99e4e63f923f14f9bf730ce5d9e1b412092528496",
+  "class_names": [
+    "empty",
+    "occupied"
+  ],
+  "judgment_by_class_index": [
+    "deviation",
+    "no_deviation"
+  ],
+  "preprocessing": {
+    "resize": 256,
+    "crop": 224,
+    "interpolation": "bilinear",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "decision_threshold": 0.6,
+  "training": {
+    "seed": 20261026,
+    "included_classes": [
+      "empty",
+      "occupied"
+    ],
+    "inventory": {
+      "train": {
+        "empty": 250,
+        "occupied": 173
+      },
+      "val": {
+        "empty": 40,
+        "occupied": 21
+      }
+    },
+    "selected_configuration": {
+      "method": "class-balanced logistic regression on frozen ImageNet MobileNetV3-Small features",
+      "standardization_folded_into_final_layer": true,
+      "development_positive_class_threshold": 0.16,
+      "threshold_logit_folded_into_positive_bias": -1.6582280766035322,
+      "C": 0.001
+    },
+    "selection_metric": "development validation balanced accuracy, then accuracy"
+  },
+  "validation": {
+    "status": "development_validation_only_not_independent_test",
+    "accuracy": 0.8524590163934426,
+    "balanced_accuracy": 0.8761904761904762,
+    "per_class": {
+      "empty": {
+        "recall": 0.8,
+        "support": 40
+      },
+      "occupied": {
+        "recall": 0.9523809523809523,
+        "support": 21
+      }
+    },
+    "confusion": {
+      "empty": {
+        "empty": 32,
+        "occupied": 8
+      },
+      "occupied": {
+        "empty": 1,
+        "occupied": 20
+      }
+    },
+    "runtime_uncertain_threshold": 0.6,
+    "runtime_definite_coverage_at_threshold": 0.6885245901639344,
+    "predictions": [
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.5968350768089294
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.6208685040473938
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.6589682102203369
+      },
+      {
+        "truth": "empty",
+        "predicted": "occupied",
+        "confidence": 0.6821285486221313
+      },
+      {
+        "truth": "empty",
+        "predicted": "occupied",
+        "confidence": 0.6734507083892822
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.6602147221565247
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.694709300994873
+      },
+      {
+        "truth": "empty",
+        "predicted": "occupied",
+        "confidence": 0.6730265617370605
+      },
+      {
+        "truth": "empty",
+        "predicted": "occupied",
+        "confidence": 0.8055770993232727
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.514936625957489
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7431766390800476
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.6136781573295593
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.5832986831665039
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7510776519775391
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.5320963859558105
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.681638240814209
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7753473520278931
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.802961528301239
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.6601972579956055
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7446727156639099
+      },
+      {
+        "truth": "empty",
+        "predicted": "occupied",
+        "confidence": 0.7185052633285522
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.6546746492385864
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.5331295132637024
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.5519105195999146
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7020426392555237
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7672066688537598
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.603638231754303
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7274064421653748
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.731461763381958
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.6522848010063171
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7608683109283447
+      },
+      {
+        "truth": "empty",
+        "predicted": "occupied",
+        "confidence": 0.5603558421134949
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.8458836674690247
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.8190157413482666
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7331692576408386
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.7808143496513367
+      },
+      {
+        "truth": "empty",
+        "predicted": "occupied",
+        "confidence": 0.5297200679779053
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.5337387323379517
+      },
+      {
+        "truth": "empty",
+        "predicted": "empty",
+        "confidence": 0.6436901092529297
+      },
+      {
+        "truth": "empty",
+        "predicted": "occupied",
+        "confidence": 0.5247290730476379
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.6260380148887634
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.5015286207199097
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.593318521976471
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.7115263342857361
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.7019129991531372
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.5804953575134277
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.538888692855835
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.6905568242073059
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.6713592410087585
+      },
+      {
+        "truth": "occupied",
+        "predicted": "empty",
+        "confidence": 0.5674912333488464
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.6724435091018677
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.7013885378837585
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.6420184373855591
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.5495262742042542
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.5104266405105591
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.5935994386672974
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.531154453754425
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.7338163256645203
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.6452184319496155
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.7139341831207275
+      },
+      {
+        "truth": "occupied",
+        "predicted": "occupied",
+        "confidence": 0.6070813536643982
+      }
+    ]
+  },
+  "ambiguous_reference_summary": null,
+  "limitation": "Development ROI crops assembled from reviewed controls; class boundary selected on development validation, and the untouched test split was not opened."
+}

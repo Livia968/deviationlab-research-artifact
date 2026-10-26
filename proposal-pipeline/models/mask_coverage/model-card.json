@@ -1,0 +1,335 @@
+{
+  "target": "mask_coverage",
+  "model_version": "mobilenetv3-roi-v2",
+  "architecture": "torchvision.mobilenet_v3_small",
+  "roi": "employee_face",
+  "source_dataset": "data/final/mask-source200-022/classification",
+  "source_dataset_selected_classes_sha256": "86ac1c7fd96918c19d78e3337da89198f96417936a564f2c06a28b8dae2b4029",
+  "pretrained_source": "torchvision MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+  "pretrained_sha256": "047dcff4addef86ea5bc2eff13c9614dc11f47ab1160d0a71a25e7db994f4e1f",
+  "weights": "mobilenetv3-small.pt",
+  "weights_sha256": "7451c69a5bb3493a550db91365484a563448dade31ca2fd94dc6786c3b265400",
+  "class_names": [
+    "covered",
+    "uncovered"
+  ],
+  "judgment_by_class_index": [
+    "no_deviation",
+    "deviation"
+  ],
+  "preprocessing": {
+    "resize": 366,
+    "crop": 320,
+    "interpolation": "bicubic",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "decision_threshold": 0.6,
+  "training": {
+    "seed": 20261026,
+    "included_classes": [
+      "covered",
+      "uncovered"
+    ],
+    "inventory": {
+      "train": {
+        "covered": 68,
+        "uncovered": 199
+      },
+      "val": {
+        "covered": 31,
+        "uncovered": 16
+      }
+    },
+    "selected_configuration": {
+      "method": "class-balanced logistic regression on frozen ImageNet MobileNetV3-Small features",
+      "standardization_folded_into_final_layer": true,
+      "development_positive_class_threshold": 0.84,
+      "threshold_logit_folded_into_positive_bias": 1.6582280766035322,
+      "C": 0.01
+    },
+    "selection_metric": "development validation balanced accuracy, then accuracy"
+  },
+  "validation": {
+    "status": "development_validation_only_not_independent_test",
+    "accuracy": 0.9148936170212766,
+    "balanced_accuracy": 0.875,
+    "per_class": {
+      "covered": {
+        "recall": 1.0,
+        "support": 31
+      },
+      "uncovered": {
+        "recall": 0.75,
+        "support": 16
+      }
+    },
+    "confusion": {
+      "covered": {
+        "covered": 31,
+        "uncovered": 0
+      },
+      "uncovered": {
+        "covered": 4,
+        "uncovered": 12
+      }
+    },
+    "runtime_uncertain_threshold": 0.6,
+    "runtime_definite_coverage_at_threshold": 0.9148936170212766,
+    "predictions": [
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.665802001953125
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.6555163860321045
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.8999641537666321
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.856372058391571
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9275012612342834
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.8354987502098083
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.6765217781066895
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.6242105960845947
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.7136669158935547
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.8946810364723206
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9181199669837952
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9548599720001221
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.7720341682434082
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.5089497566223145
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9820398688316345
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9639583230018616
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9584924578666687
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.8745090961456299
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.8777472972869873
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9803295135498047
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9680092930793762
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9897549748420715
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.7887541651725769
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.7160110473632812
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9160138964653015
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.8608548641204834
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.764132559299469
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9283697605133057
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9860677123069763
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9493901133537292
+      },
+      {
+        "truth": "covered",
+        "predicted": "covered",
+        "confidence": 0.9693701863288879
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "covered",
+        "confidence": 0.8745026588439941
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.5692723393440247
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "covered",
+        "confidence": 0.7419417500495911
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.7685382962226868
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.8805413842201233
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.7440058588981628
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.6910828351974487
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.9390461444854736
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.8955761790275574
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.5650119185447693
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.7907358407974243
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "covered",
+        "confidence": 0.9688186049461365
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.7020688652992249
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "covered",
+        "confidence": 0.881180465221405
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.8237779140472412
+      },
+      {
+        "truth": "uncovered",
+        "predicted": "uncovered",
+        "confidence": 0.5537626147270203
+      }
+    ]
+  },
+  "ambiguous_reference_summary": {
+    "reference_uncertain_count": 20,
+    "purpose": "descriptive only; uncertainty is not treated as a trainable visual class",
+    "runtime_uncertain_fraction_at_0.60": 0.3,
+    "predicted_class_counts": {
+      "uncovered": 3,
+      "covered": 17
+    }
+  },
+  "limitation": "Covered/uncovered development crops only; ambiguous crops are excluded from class fitting and remain eligible for the runtime uncertain state. Not an independent acceptance set."
+}

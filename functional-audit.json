@@ -1,0 +1,236 @@
+{
+  "status": "pass",
+  "scope": "functional integration, not accuracy validation",
+  "cases": [
+    {
+      "file": "kitchen-mask.jpg",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 0.51,
+      "review_saved": true,
+      "statuses": [
+        {
+          "cap_absent": "uncertain",
+          "mask_uncovered": "uncertain",
+          "uniform_absent": "uncertain"
+        }
+      ]
+    },
+    {
+      "file": "kitchen-mask.mp4",
+      "state": "completed",
+      "frames": 3,
+      "seconds": 1.54,
+      "review_saved": true,
+      "statuses": [
+        {
+          "cap_absent": "uncertain",
+          "mask_uncovered": "uncertain",
+          "uniform_absent": "uncertain"
+        },
+        {
+          "cap_absent": "absent",
+          "mask_uncovered": "present",
+          "uniform_absent": "uncertain"
+        },
+        {
+          "cap_absent": "absent",
+          "mask_uncovered": "present",
+          "uniform_absent": "absent"
+        }
+      ]
+    },
+    {
+      "file": "kitchen-workwear.jpg",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 0.51,
+      "review_saved": true,
+      "statuses": [
+        {
+          "cap_absent": "uncertain",
+          "mask_uncovered": "uncertain",
+          "uniform_absent": "uncertain"
+        }
+      ]
+    },
+    {
+      "file": "kitchen-workwear.mp4",
+      "state": "completed",
+      "frames": 3,
+      "seconds": 1.52,
+      "review_saved": true,
+      "statuses": [
+        {
+          "cap_absent": "uncertain",
+          "mask_uncovered": "uncertain",
+          "uniform_absent": "present"
+        },
+        {
+          "cap_absent": "uncertain",
+          "mask_uncovered": "uncertain",
+          "uniform_absent": "uncertain"
+        },
+        {
+          "cap_absent": "present",
+          "mask_uncovered": "present",
+          "uniform_absent": "absent"
+        }
+      ]
+    },
+    {
+      "file": "kitchen-headwear.jpg",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 0.51,
+      "review_saved": true,
+      "statuses": [
+        {
+          "cap_absent": "absent",
+          "mask_uncovered": "absent",
+          "uniform_absent": "absent"
+        }
+      ]
+    },
+    {
+      "file": "kitchen-headwear.mp4",
+      "state": "completed",
+      "frames": 3,
+      "seconds": 1.52,
+      "review_saved": true,
+      "statuses": [
+        {
+          "cap_absent": "uncertain",
+          "mask_uncovered": "uncertain",
+          "uniform_absent": "absent"
+        },
+        {
+          "cap_absent": "absent",
+          "mask_uncovered": "present",
+          "uniform_absent": "absent"
+        },
+        {
+          "cap_absent": "absent",
+          "mask_uncovered": "present",
+          "uniform_absent": "absent"
+        }
+      ]
+    },
+    {
+      "file": "front-tables.jpg",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 0.51,
+      "review_saved": true,
+      "statuses": [
+        {
+          "table_uncleared": "present",
+          "bread_shelf_underfilled": "uncertain",
+          "cashier_vacancy": "not_applicable"
+        }
+      ]
+    },
+    {
+      "file": "front-tables.mp4",
+      "state": "completed",
+      "frames": 3,
+      "seconds": 2.03,
+      "review_saved": true,
+      "statuses": [
+        {
+          "table_uncleared": "present",
+          "bread_shelf_underfilled": "uncertain",
+          "cashier_vacancy": "not_applicable"
+        },
+        {
+          "table_uncleared": "present",
+          "bread_shelf_underfilled": "uncertain",
+          "cashier_vacancy": "not_applicable"
+        },
+        {
+          "table_uncleared": "present",
+          "bread_shelf_underfilled": "uncertain",
+          "cashier_vacancy": "not_applicable"
+        }
+      ]
+    },
+    {
+      "file": "front-bread.jpg",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 0.51,
+      "review_saved": true,
+      "statuses": [
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "uncertain",
+          "cashier_vacancy": "not_applicable"
+        }
+      ]
+    },
+    {
+      "file": "front-bread.mp4",
+      "state": "completed",
+      "frames": 3,
+      "seconds": 1.02,
+      "review_saved": true,
+      "statuses": [
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "uncertain",
+          "cashier_vacancy": "not_applicable"
+        },
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "uncertain",
+          "cashier_vacancy": "not_applicable"
+        },
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "uncertain",
+          "cashier_vacancy": "not_applicable"
+        }
+      ]
+    },
+    {
+      "file": "front-cashier.jpg",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 1.01,
+      "review_saved": true,
+      "statuses": [
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "present"
+        }
+      ]
+    },
+    {
+      "file": "front-cashier.mp4",
+      "state": "completed",
+      "frames": 3,
+      "seconds": 2.03,
+      "review_saved": true,
+      "statuses": [
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "present"
+        },
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "present"
+        },
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "present"
+        }
+      ]
+    }
+  ],
+  "model": "mobilenetv3-roi-v2",
+  "cashier_test_roi": "arbitrary central geometry for functional test only"
+}

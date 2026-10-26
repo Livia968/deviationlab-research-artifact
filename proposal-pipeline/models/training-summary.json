@@ -1,0 +1,106 @@
+{
+  "status": "trained_development_weights_pending_independent_evaluation",
+  "version": "mobilenetv3-roi-v2",
+  "architecture": "YOLO ROI localization -> target-specific MobileNetV3-Small classification",
+  "improvement_target": "mask_coverage and cashier_occupancy development accuracy and balanced accuracy >= 0.85",
+  "improvement_target_met": true,
+  "models": {
+    "bread_display_gaps": {
+      "weights": "outputs/models/mobilenetv3-roi-v1/bread_display_gaps/mobilenetv3-small.pt",
+      "weights_sha256": "49f467cd3a05da9195f264d4ee9b00bc80a82a944e28c013ec0bb039ce1ab455",
+      "class_names": [
+        "full",
+        "underfilled"
+      ],
+      "judgment_by_class_index": [
+        "no_deviation",
+        "deviation"
+      ],
+      "decision_threshold": 0.6,
+      "development_accuracy": 0.9944289693593314,
+      "development_balanced_accuracy": 0.898587570621469,
+      "limitation": "Full-shelf controls are limited and assistant-reviewed; not an independent specificity test."
+    },
+    "cashier_occupancy": {
+      "weights": "outputs/models/mobilenetv3-roi-v2/cashier_occupancy/mobilenetv3-small.pt",
+      "weights_sha256": "68412f8b51f87ba0528974a99e4e63f923f14f9bf730ce5d9e1b412092528496",
+      "class_names": [
+        "empty",
+        "occupied"
+      ],
+      "judgment_by_class_index": [
+        "deviation",
+        "no_deviation"
+      ],
+      "decision_threshold": 0.6,
+      "development_accuracy": 0.8524590163934426,
+      "development_balanced_accuracy": 0.8761904761904762,
+      "limitation": "Development ROI crops assembled from reviewed controls; class boundary selected on development validation, and the untouched test split was not opened."
+    },
+    "head_covering": {
+      "weights": "outputs/models/mobilenetv3-roi-v1/head_covering/mobilenetv3-small.pt",
+      "weights_sha256": "9d80a183117e6abc1864ac1b5cfe6982e038c95c6ce498b9e3bf155cb9d3ced5",
+      "class_names": [
+        "cap_absent",
+        "cap_present"
+      ],
+      "judgment_by_class_index": [
+        "deviation",
+        "no_deviation"
+      ],
+      "decision_threshold": 0.6,
+      "development_accuracy": 0.8166666666666667,
+      "development_balanced_accuracy": 0.8854166666666667,
+      "limitation": "Development crops; validation is small and not an independent acceptance set."
+    },
+    "mask_coverage": {
+      "weights": "outputs/models/mobilenetv3-roi-v2/mask_coverage/mobilenetv3-small.pt",
+      "weights_sha256": "7451c69a5bb3493a550db91365484a563448dade31ca2fd94dc6786c3b265400",
+      "class_names": [
+        "covered",
+        "uncovered"
+      ],
+      "judgment_by_class_index": [
+        "no_deviation",
+        "deviation"
+      ],
+      "decision_threshold": 0.6,
+      "development_accuracy": 0.9148936170212766,
+      "development_balanced_accuracy": 0.875,
+      "limitation": "Covered/uncovered development crops only; ambiguous crops are excluded from class fitting and remain eligible for the runtime uncertain state. Not an independent acceptance set."
+    },
+    "table_clearance": {
+      "weights": "outputs/models/mobilenetv3-roi-v1/table_clearance/mobilenetv3-small.pt",
+      "weights_sha256": "41e550e5c0fabb9d1feeff2455470482cb5a74d9bb0c46a5f36a5d86a2c8a602",
+      "class_names": [
+        "clean",
+        "uncleared"
+      ],
+      "judgment_by_class_index": [
+        "no_deviation",
+        "deviation"
+      ],
+      "decision_threshold": 0.6,
+      "development_accuracy": 0.9722222222222222,
+      "development_balanced_accuracy": 0.984375,
+      "limitation": "Clean controls are few and assistant-reviewed; not an independent specificity test."
+    },
+    "workwear": {
+      "weights": "outputs/models/mobilenetv3-roi-v1/workwear/mobilenetv3-small.pt",
+      "weights_sha256": "e517ab93202878ba5f96a841ec7bc2cdffcd6c04d381bb8290c5ac188e1840a9",
+      "class_names": [
+        "ordinary_clothes",
+        "workwear_visible"
+      ],
+      "judgment_by_class_index": [
+        "deviation",
+        "no_deviation"
+      ],
+      "decision_threshold": 0.6,
+      "development_accuracy": 0.8709677419354839,
+      "development_balanced_accuracy": 0.8514957264957265,
+      "limitation": "Assistant-reviewed development crops; ambiguous crops were withheld."
+    }
+  },
+  "global_limitation": "Metrics are internal development validation selected during model development. They are not independent accuracy estimates; separate store/camera footage remains required."
+}

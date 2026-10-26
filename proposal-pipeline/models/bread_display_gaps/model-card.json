@@ -1,0 +1,2035 @@
+{
+  "target": "bread_display_gaps",
+  "architecture": "torchvision.mobilenet_v3_small",
+  "roi": "bread_display",
+  "source_dataset": "data/final/bread-state-controls-003/classification",
+  "source_dataset_sha256": "d4603b75860b82bd64f69aaa3dd9bcb18aedf03f34858e1cf900c08f16093468",
+  "pretrained_source": "torchvision MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+  "pretrained_sha256": "047dcff4addef86ea5bc2eff13c9614dc11f47ab1160d0a71a25e7db994f4e1f",
+  "weights": "mobilenetv3-small.pt",
+  "weights_sha256": "49f467cd3a05da9195f264d4ee9b00bc80a82a944e28c013ec0bb039ce1ab455",
+  "class_names": [
+    "full",
+    "underfilled"
+  ],
+  "judgment_by_class_index": [
+    "no_deviation",
+    "deviation"
+  ],
+  "preprocessing": {
+    "resize": 256,
+    "crop": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "decision_threshold": 0.6,
+  "training": {
+    "seed": 20261026,
+    "class_balancing": "WeightedRandomSampler with equal expected class mass",
+    "head_epochs": 4,
+    "finetune_epochs": 4,
+    "head_lr": 0.001,
+    "finetune_lr": 0.0001,
+    "batch_size": 32,
+    "selected_checkpoint": "highest development validation balanced accuracy",
+    "inventory": {
+      "train": {
+        "full": 24,
+        "underfilled": 600
+      },
+      "val": {
+        "full": 5,
+        "underfilled": 354
+      }
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "phase": "head",
+        "train_loss": 0.2747706358249371,
+        "train_accuracy": 0.9375,
+        "val_loss": 0.24593380604115703,
+        "val_accuracy": 0.9916434540389972,
+        "val_balanced_accuracy": 0.7
+      },
+      {
+        "epoch": 2,
+        "phase": "head",
+        "train_loss": 0.17880812898660317,
+        "train_accuracy": 0.9887820512820513,
+        "val_loss": 0.2290753615101732,
+        "val_accuracy": 0.9192200557103064,
+        "val_balanced_accuracy": 0.7618644067796609
+      },
+      {
+        "epoch": 3,
+        "phase": "head",
+        "train_loss": 0.17784377321218833,
+        "train_accuracy": 0.9823717948717948,
+        "val_loss": 0.21944021726219104,
+        "val_accuracy": 0.9888579387186629,
+        "val_balanced_accuracy": 0.6
+      },
+      {
+        "epoch": 4,
+        "phase": "head",
+        "train_loss": 0.15006747841835022,
+        "train_accuracy": 0.9967948717948718,
+        "val_loss": 0.19170587391574404,
+        "val_accuracy": 0.9916434540389972,
+        "val_balanced_accuracy": 0.7
+      },
+      {
+        "epoch": 5,
+        "phase": "last_block",
+        "train_loss": 0.13613898975726885,
+        "train_accuracy": 1.0,
+        "val_loss": 0.19844618655512924,
+        "val_accuracy": 0.9944289693593314,
+        "val_balanced_accuracy": 0.898587570621469
+      },
+      {
+        "epoch": 6,
+        "phase": "last_block",
+        "train_loss": 0.1370133020174809,
+        "train_accuracy": 0.9967948717948718,
+        "val_loss": 0.19748554422330725,
+        "val_accuracy": 0.9944289693593314,
+        "val_balanced_accuracy": 0.898587570621469
+      },
+      {
+        "epoch": 7,
+        "phase": "last_block",
+        "train_loss": 0.13447409658095774,
+        "train_accuracy": 0.9983974358974359,
+        "val_loss": 0.21154470895326238,
+        "val_accuracy": 0.9498607242339833,
+        "val_balanced_accuracy": 0.8759887005649718
+      },
+      {
+        "epoch": 8,
+        "phase": "last_block",
+        "train_loss": 0.13748957637028816,
+        "train_accuracy": 0.9967948717948718,
+        "val_loss": 0.2205370490265424,
+        "val_accuracy": 0.9136490250696379,
+        "val_balanced_accuracy": 0.8576271186440678
+      }
+    ]
+  },
+  "validation": {
+    "status": "development_validation_only_not_independent_test",
+    "accuracy": 0.9944289693593314,
+    "balanced_accuracy": 0.898587570621469,
+    "per_class": {
+      "full": {
+        "precision": 0.8,
+        "recall": 0.8,
+        "f1": 0.8000000000000002,
+        "support": 5
+      },
+      "underfilled": {
+        "precision": 0.9971751412429378,
+        "recall": 0.9971751412429378,
+        "f1": 0.9971751412429379,
+        "support": 354
+      }
+    },
+    "confusion": {
+      "full": {
+        "full": 4,
+        "underfilled": 1
+      },
+      "underfilled": {
+        "full": 1,
+        "underfilled": 353
+      }
+    },
+    "selective": [
+      {
+        "threshold": 0.5,
+        "answered": 359,
+        "total": 359,
+        "coverage": 1.0,
+        "accuracy": 0.9944289693593314
+      },
+      {
+        "threshold": 0.55,
+        "answered": 347,
+        "total": 359,
+        "coverage": 0.9665738161559888,
+        "accuracy": 0.9971181556195965
+      },
+      {
+        "threshold": 0.6,
+        "answered": 333,
+        "total": 359,
+        "coverage": 0.9275766016713092,
+        "accuracy": 0.996996996996997
+      },
+      {
+        "threshold": 0.65,
+        "answered": 326,
+        "total": 359,
+        "coverage": 0.9080779944289693,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.7,
+        "answered": 319,
+        "total": 359,
+        "coverage": 0.8885793871866295,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.75,
+        "answered": 317,
+        "total": 359,
+        "coverage": 0.883008356545961,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.8,
+        "answered": 315,
+        "total": 359,
+        "coverage": 0.8774373259052924,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.85,
+        "answered": 302,
+        "total": 359,
+        "coverage": 0.841225626740947,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.9,
+        "answered": 283,
+        "total": 359,
+        "coverage": 0.7883008356545961,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.95,
+        "answered": 263,
+        "total": 359,
+        "coverage": 0.7325905292479109,
+        "accuracy": 1.0
+      }
+    ],
+    "class_names": [
+      "full",
+      "underfilled"
+    ],
+    "judgment_by_class_index": [
+      "no_deviation",
+      "deviation"
+    ],
+    "predictions": [
+      {
+        "truth": "full",
+        "predicted": "underfilled",
+        "confidence": 0.6243299841880798
+      },
+      {
+        "truth": "full",
+        "predicted": "full",
+        "confidence": 0.5723890662193298
+      },
+      {
+        "truth": "full",
+        "predicted": "full",
+        "confidence": 0.9849591851234436
+      },
+      {
+        "truth": "full",
+        "predicted": "full",
+        "confidence": 0.83661288022995
+      },
+      {
+        "truth": "full",
+        "predicted": "full",
+        "confidence": 0.5097400546073914
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9915943741798401
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9986670017242432
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9982187151908875
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9924529194831848
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9840853214263916
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.989662766456604
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9979791045188904
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.997882068157196
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5987375974655151
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9986187219619751
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9884856939315796
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9797489047050476
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9957367181777954
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9950002431869507
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9566093683242798
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9904243350028992
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9964010715484619
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9991590976715088
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9978031516075134
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9987393021583557
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.995969295501709
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9834693670272827
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9891381859779358
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9907134771347046
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.996030867099762
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8660165071487427
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9985126852989197
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9913617968559265
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9619024395942688
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9971734285354614
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.998306155204773
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8236456513404846
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9979640245437622
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9977766871452332
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9979166388511658
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9996469020843506
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9988252520561218
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8848608136177063
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9980859756469727
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.988301694393158
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9969733953475952
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9967349171638489
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9976426959037781
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9986794590950012
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9870285987854004
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9983142614364624
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9778274893760681
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9964689016342163
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9987773299217224
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9986236095428467
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9966012239456177
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5943961143493652
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9990720748901367
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9976045489311218
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9702128767967224
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5287728309631348
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9309445023536682
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9960147142410278
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9994972944259644
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9971203804016113
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9964117407798767
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9950680732727051
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.882527768611908
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9972053170204163
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9609307050704956
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.609757125377655
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9164630174636841
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9810345768928528
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8939424753189087
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9420574307441711
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8840027451515198
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8379803895950317
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.996968686580658
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.999197781085968
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9988610744476318
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9967929720878601
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9683948159217834
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.995598554611206
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9987226128578186
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9884823560714722
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9948208332061768
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9984810948371887
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9844068288803101
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9923039078712463
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8736693859100342
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9891120791435242
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9958107471466064
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9978315234184265
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9992221593856812
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5936005711555481
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5436463356018066
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.7175827026367188
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9946974515914917
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8646808862686157
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9906198978424072
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6534848809242249
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9900662899017334
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.998916506767273
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9981202483177185
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9241402745246887
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9992185831069946
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8285742402076721
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9977548718452454
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8553301692008972
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.561869204044342
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9309712648391724
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8341326117515564
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9588426947593689
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9961841702461243
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9241440296173096
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9705427885055542
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8674507737159729
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6254706382751465
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9937315583229065
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9977383613586426
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9977447986602783
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9984455704689026
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9786837697029114
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.7050589919090271
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9938503503799438
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.997491717338562
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9988471269607544
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9941074848175049
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.997580885887146
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.572359561920166
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5648964047431946
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.998336672782898
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9822002649307251
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9979485869407654
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9174806475639343
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9535536766052246
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9978926777839661
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9896090030670166
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8247206211090088
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9971662163734436
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9971791505813599
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8288286328315735
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9974822402000427
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9930946826934814
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9962875843048096
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "full",
+        "confidence": 0.5057508945465088
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.997905969619751
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.995404839515686
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.974738597869873
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9989976286888123
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9978612065315247
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9915789365768433
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9159088730812073
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9893019795417786
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9431101083755493
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6890380382537842
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9963101744651794
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6236488223075867
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8610984086990356
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5731470584869385
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9996380805969238
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9947571754455566
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9947039484977722
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5005743503570557
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9908326268196106
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5475636720657349
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9958239793777466
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.510424017906189
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9944146871566772
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9952292442321777
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.991853654384613
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9988258481025696
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9852550029754639
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9345479607582092
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9986182451248169
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9606970548629761
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.997549831867218
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9839990735054016
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5392585396766663
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.967653751373291
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.994633674621582
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9966375827789307
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9992417097091675
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.993866503238678
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9910647869110107
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5580865144729614
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9969527721405029
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9819918274879456
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9948524832725525
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9996065497398376
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.791398286819458
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9993460774421692
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9974932670593262
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8048098683357239
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9474452137947083
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9061181545257568
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9892374277114868
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9117751717567444
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9982979893684387
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9935715198516846
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8754511475563049
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9993896484375
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9964780211448669
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.988867998123169
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9989833235740662
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9984057545661926
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9952066540718079
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9911264777183533
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9881566166877747
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5944631695747375
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9982744455337524
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9969889521598816
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5722163915634155
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9890479445457458
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8893166184425354
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9929249286651611
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9843090176582336
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.998954176902771
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9716587662696838
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9943658113479614
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9965996146202087
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9849861264228821
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9993732571601868
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9868867993354797
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9832277297973633
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9963585734367371
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8978700637817383
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9793840050697327
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9989985823631287
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9951860308647156
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9991599321365356
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9971509575843811
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9158551096916199
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5151955485343933
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9996463060379028
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9392029643058777
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9967617392539978
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9989830851554871
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9984620809555054
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9951989054679871
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6562522649765015
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9637870788574219
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9917192459106445
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9981343150138855
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9984332919120789
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9966439008712769
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9982726573944092
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6107184886932373
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9990197420120239
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9991036057472229
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9792419672012329
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9980757236480713
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8283178210258484
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9982661604881287
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9722827672958374
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9987114667892456
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9410569667816162
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9975427389144897
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9923388957977295
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8579476475715637
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9982067346572876
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9981948733329773
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9992513060569763
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.827677309513092
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8947929739952087
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9902358651161194
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5079936981201172
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9880933165550232
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9207788109779358
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9881854057312012
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9979959726333618
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9943228960037231
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9844446182250977
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9843846559524536
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9893689751625061
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9977895021438599
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9894357919692993
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9988419413566589
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9983426332473755
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9976491332054138
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9992361068725586
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9172186851501465
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9975294470787048
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9977178573608398
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.997366726398468
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5262351036071777
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9993324875831604
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9943132400512695
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.865041971206665
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9897951483726501
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9987761378288269
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9213806390762329
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.998458981513977
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.998820960521698
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9859380125999451
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9952151775360107
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9973315000534058
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9813434481620789
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.998083233833313
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9986225366592407
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9913221597671509
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9850167036056519
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9983223080635071
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.998247504234314
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.653994619846344
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9974911212921143
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8094884157180786
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9986129999160767
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.995333731174469
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9976035952568054
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9941437840461731
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8460099101066589
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9961590766906738
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9968494772911072
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9894765615463257
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9985470175743103
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9737367630004883
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5625209808349609
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9676916003227234
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9985887408256531
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9664470553398132
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.996616780757904
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9932019114494324
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9911854863166809
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.875928521156311
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9886242151260376
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9922465085983276
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9989759922027588
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9990676045417786
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5527925491333008
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9718123078346252
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5493817329406738
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9874136447906494
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9127841591835022
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9868310689926147
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.996239185333252
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9962487816810608
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9983299374580383
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9989951252937317
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6706157922744751
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.7830103635787964
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9982831478118896
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9914181232452393
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9512510299682617
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9991590976715088
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8314225673675537
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9944131970405579
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6224877834320068
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.8682485818862915
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.871687114238739
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9930270314216614
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6761536002159119
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9988508224487305
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9977431297302246
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9978261590003967
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.5891209244728088
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6598364114761353
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.9932695031166077
+      },
+      {
+        "truth": "underfilled",
+        "predicted": "underfilled",
+        "confidence": 0.6344587206840515
+      }
+    ]
+  },
+  "limitation": "Full-shelf controls are limited and assistant-reviewed; not an independent specificity test."
+}

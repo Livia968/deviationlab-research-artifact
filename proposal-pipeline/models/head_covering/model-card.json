@@ -1,0 +1,540 @@
+{
+  "target": "head_covering",
+  "architecture": "torchvision.mobilenet_v3_small",
+  "roi": "employee_head",
+  "source_dataset": "data/final/cap-black-cloth-010/cap_classification",
+  "source_dataset_sha256": "c5764bdcc78a70b071794f68e184d28b1afb041fdfe7e1e2e3a4f450e85f3891",
+  "pretrained_source": "torchvision MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+  "pretrained_sha256": "047dcff4addef86ea5bc2eff13c9614dc11f47ab1160d0a71a25e7db994f4e1f",
+  "weights": "mobilenetv3-small.pt",
+  "weights_sha256": "9d80a183117e6abc1864ac1b5cfe6982e038c95c6ce498b9e3bf155cb9d3ced5",
+  "class_names": [
+    "cap_absent",
+    "cap_present"
+  ],
+  "judgment_by_class_index": [
+    "deviation",
+    "no_deviation"
+  ],
+  "preprocessing": {
+    "resize": 256,
+    "crop": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "decision_threshold": 0.6,
+  "training": {
+    "seed": 20261026,
+    "class_balancing": "WeightedRandomSampler with equal expected class mass",
+    "head_epochs": 4,
+    "finetune_epochs": 4,
+    "head_lr": 0.001,
+    "finetune_lr": 0.0001,
+    "batch_size": 32,
+    "selected_checkpoint": "highest development validation balanced accuracy",
+    "inventory": {
+      "train": {
+        "cap_absent": 114,
+        "cap_present": 242
+      },
+      "val": {
+        "cap_absent": 12,
+        "cap_present": 48
+      }
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "phase": "head",
+        "train_loss": 0.4706385651331269,
+        "train_accuracy": 0.800561797752809,
+        "val_loss": 0.5010731418927511,
+        "val_accuracy": 0.7833333333333333,
+        "val_balanced_accuracy": 0.8645833333333333
+      },
+      {
+        "epoch": 2,
+        "phase": "head",
+        "train_loss": 0.3072961898667089,
+        "train_accuracy": 0.8960674157303371,
+        "val_loss": 0.906609042485555,
+        "val_accuracy": 0.6833333333333333,
+        "val_balanced_accuracy": 0.8020833333333333
+      },
+      {
+        "epoch": 3,
+        "phase": "head",
+        "train_loss": 0.3041318685151218,
+        "train_accuracy": 0.901685393258427,
+        "val_loss": 1.195989759763082,
+        "val_accuracy": 0.6,
+        "val_balanced_accuracy": 0.75
+      },
+      {
+        "epoch": 4,
+        "phase": "head",
+        "train_loss": 0.33960471930128805,
+        "train_accuracy": 0.9044943820224719,
+        "val_loss": 0.5672130743662517,
+        "val_accuracy": 0.8166666666666667,
+        "val_balanced_accuracy": 0.8854166666666667
+      },
+      {
+        "epoch": 5,
+        "phase": "last_block",
+        "train_loss": 0.27387354246686013,
+        "train_accuracy": 0.9269662921348315,
+        "val_loss": 0.6316604852676392,
+        "val_accuracy": 0.75,
+        "val_balanced_accuracy": 0.84375
+      },
+      {
+        "epoch": 6,
+        "phase": "last_block",
+        "train_loss": 0.24623031763548262,
+        "train_accuracy": 0.9578651685393258,
+        "val_loss": 0.49876608451207477,
+        "val_accuracy": 0.8,
+        "val_balanced_accuracy": 0.875
+      },
+      {
+        "epoch": 7,
+        "phase": "last_block",
+        "train_loss": 0.2267326953705777,
+        "train_accuracy": 0.9606741573033708,
+        "val_loss": 0.4772986888885498,
+        "val_accuracy": 0.8166666666666667,
+        "val_balanced_accuracy": 0.8854166666666667
+      },
+      {
+        "epoch": 8,
+        "phase": "last_block",
+        "train_loss": 0.23357234476657396,
+        "train_accuracy": 0.952247191011236,
+        "val_loss": 0.5018966277440389,
+        "val_accuracy": 0.8,
+        "val_balanced_accuracy": 0.875
+      }
+    ]
+  },
+  "validation": {
+    "status": "development_validation_only_not_independent_test",
+    "accuracy": 0.8166666666666667,
+    "balanced_accuracy": 0.8854166666666667,
+    "per_class": {
+      "cap_absent": {
+        "precision": 0.5217391304347826,
+        "recall": 1.0,
+        "f1": 0.6857142857142856,
+        "support": 12
+      },
+      "cap_present": {
+        "precision": 1.0,
+        "recall": 0.7708333333333334,
+        "f1": 0.8705882352941177,
+        "support": 48
+      }
+    },
+    "confusion": {
+      "cap_absent": {
+        "cap_absent": 12,
+        "cap_present": 0
+      },
+      "cap_present": {
+        "cap_absent": 11,
+        "cap_present": 37
+      }
+    },
+    "selective": [
+      {
+        "threshold": 0.5,
+        "answered": 60,
+        "total": 60,
+        "coverage": 1.0,
+        "accuracy": 0.8166666666666667
+      },
+      {
+        "threshold": 0.55,
+        "answered": 55,
+        "total": 60,
+        "coverage": 0.9166666666666666,
+        "accuracy": 0.8
+      },
+      {
+        "threshold": 0.6,
+        "answered": 55,
+        "total": 60,
+        "coverage": 0.9166666666666666,
+        "accuracy": 0.8
+      },
+      {
+        "threshold": 0.65,
+        "answered": 55,
+        "total": 60,
+        "coverage": 0.9166666666666666,
+        "accuracy": 0.8
+      },
+      {
+        "threshold": 0.7,
+        "answered": 51,
+        "total": 60,
+        "coverage": 0.85,
+        "accuracy": 0.8431372549019608
+      },
+      {
+        "threshold": 0.75,
+        "answered": 47,
+        "total": 60,
+        "coverage": 0.7833333333333333,
+        "accuracy": 0.851063829787234
+      },
+      {
+        "threshold": 0.8,
+        "answered": 43,
+        "total": 60,
+        "coverage": 0.7166666666666667,
+        "accuracy": 0.8837209302325582
+      },
+      {
+        "threshold": 0.85,
+        "answered": 42,
+        "total": 60,
+        "coverage": 0.7,
+        "accuracy": 0.8809523809523809
+      },
+      {
+        "threshold": 0.9,
+        "answered": 36,
+        "total": 60,
+        "coverage": 0.6,
+        "accuracy": 0.8888888888888888
+      },
+      {
+        "threshold": 0.95,
+        "answered": 28,
+        "total": 60,
+        "coverage": 0.4666666666666667,
+        "accuracy": 0.8928571428571429
+      }
+    ],
+    "class_names": [
+      "cap_absent",
+      "cap_present"
+    ],
+    "judgment_by_class_index": [
+      "deviation",
+      "no_deviation"
+    ],
+    "predictions": [
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.5363689064979553
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.9436360001564026
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.8596587777137756
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.9760430455207825
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.8424908518791199
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.988029420375824
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.9380082488059998
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.9625407457351685
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.773822546005249
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.8568761944770813
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.9238237738609314
+      },
+      {
+        "truth": "cap_absent",
+        "predicted": "cap_absent",
+        "confidence": 0.9613086581230164
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9919622540473938
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.8743075728416443
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9908733367919922
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9975605010986328
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9891428351402283
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.7499385476112366
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9552686810493469
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9458426833152771
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9714707136154175
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9737556576728821
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.6798444986343384
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.9848393201828003
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.6795544624328613
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.8648304343223572
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9161296486854553
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9939275979995728
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9647759199142456
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.5146719813346863
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9432039856910706
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.9457488656044006
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.7868825197219849
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.6748576164245605
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.5034119486808777
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9985232949256897
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9956063628196716
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.8816067576408386
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9800961017608643
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9676140546798706
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.8795850872993469
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.7175752520561218
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.983551561832428
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9542877078056335
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.5180488228797913
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.9544387459754944
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.9856802225112915
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9248566627502441
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.5223254561424255
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.650866687297821
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9544582962989807
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.992833137512207
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.7104668021202087
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_absent",
+        "confidence": 0.751865565776825
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9875783324241638
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.7327357530593872
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.7675197720527649
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9783148765563965
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9528505206108093
+      },
+      {
+        "truth": "cap_present",
+        "predicted": "cap_present",
+        "confidence": 0.9551912546157837
+      }
+    ]
+  },
+  "limitation": "Development crops; validation is small and not an independent acceptance set."
+}

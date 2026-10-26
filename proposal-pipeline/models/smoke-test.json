@@ -1,0 +1,55 @@
+{
+  "status": "pass",
+  "scope": "checkpoint integrity, adapter compatibility, and one-image inference per target",
+  "not_established": "independent recognition accuracy or full YOLO-to-MobileNetV3 sequence accuracy",
+  "results": {
+    "head_covering": {
+      "status": "pass",
+      "input": "data/final/cap-black-cloth-010/cap_classification/val/cap_absent/1b2cf7862c0172914f24dc6d_head_01.png",
+      "judgment": "uncertain",
+      "score": 0.536371111869812,
+      "classifier_version": "mobilenetv3-small.pt",
+      "weights_sha256": "9d80a183117e6abc1864ac1b5cfe6982e038c95c6ce498b9e3bf155cb9d3ced5"
+    },
+    "mask_coverage": {
+      "status": "pass",
+      "input": "data/final/mask-source200-022/classification/val/covered/mask_1cf9721175cf353d0940b8fe_0.jpg",
+      "judgment": "no_deviation",
+      "score": 0.665801465511322,
+      "classifier_version": "mobilenetv3-small.pt",
+      "weights_sha256": "7451c69a5bb3493a550db91365484a563448dade31ca2fd94dc6786c3b265400"
+    },
+    "workwear": {
+      "status": "pass",
+      "input": "data/final/uniform-source200-017/classification/val/ordinary_clothes/uniform_01956983c518bf15c70537fa_0.jpg",
+      "judgment": "deviation",
+      "score": 0.7660927772521973,
+      "classifier_version": "mobilenetv3-small.pt",
+      "weights_sha256": "e517ab93202878ba5f96a841ec7bc2cdffcd6c04d381bb8290c5ac188e1840a9"
+    },
+    "table_clearance": {
+      "status": "pass",
+      "input": "data/final/table-state-controls-001/classification/val/clean/10448759_0.jpg",
+      "judgment": "no_deviation",
+      "score": 0.9951896667480469,
+      "classifier_version": "mobilenetv3-small.pt",
+      "weights_sha256": "41e550e5c0fabb9d1feeff2455470482cb5a74d9bb0c46a5f36a5d86a2c8a602"
+    },
+    "bread_display_gaps": {
+      "status": "pass",
+      "input": "data/final/bread-state-controls-003/classification/val/full/3950431.jpg",
+      "judgment": "deviation",
+      "score": 0.6243294477462769,
+      "classifier_version": "mobilenetv3-small.pt",
+      "weights_sha256": "49f467cd3a05da9195f264d4ee9b00bc80a82a944e28c013ec0bb039ce1ab455"
+    },
+    "cashier_occupancy": {
+      "status": "pass",
+      "input": "data/intermediate/cashier_vacancy_real_controls/classifier_dataset/val/empty/10629110.jpg",
+      "judgment": "uncertain",
+      "score": 0.5968357920646667,
+      "classifier_version": "mobilenetv3-small.pt",
+      "weights_sha256": "68412f8b51f87ba0528974a99e4e63f923f14f9bf730ce5d9e1b412092528496"
+    }
+  }
+}

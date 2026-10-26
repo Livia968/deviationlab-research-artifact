@@ -1,0 +1,420 @@
+{
+  "target": "table_clearance",
+  "architecture": "torchvision.mobilenet_v3_small",
+  "roi": "dining_table_surface",
+  "source_dataset": "data/final/table-state-controls-001/classification",
+  "source_dataset_sha256": "000b7420011cd44cb2740a9a4733b1331c8ccc46a1c0a5c012f2f02eaa5fbeb9",
+  "pretrained_source": "torchvision MobileNet_V3_Small_Weights.IMAGENET1K_V1",
+  "pretrained_sha256": "047dcff4addef86ea5bc2eff13c9614dc11f47ab1160d0a71a25e7db994f4e1f",
+  "weights": "mobilenetv3-small.pt",
+  "weights_sha256": "41e550e5c0fabb9d1feeff2455470482cb5a74d9bb0c46a5f36a5d86a2c8a602",
+  "class_names": [
+    "clean",
+    "uncleared"
+  ],
+  "judgment_by_class_index": [
+    "no_deviation",
+    "deviation"
+  ],
+  "preprocessing": {
+    "resize": 256,
+    "crop": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "decision_threshold": 0.6,
+  "training": {
+    "seed": 20261026,
+    "class_balancing": "WeightedRandomSampler with equal expected class mass",
+    "head_epochs": 4,
+    "finetune_epochs": 4,
+    "head_lr": 0.001,
+    "finetune_lr": 0.0001,
+    "batch_size": 32,
+    "selected_checkpoint": "highest development validation balanced accuracy",
+    "inventory": {
+      "train": {
+        "clean": 6,
+        "uncleared": 128
+      },
+      "val": {
+        "clean": 4,
+        "uncleared": 32
+      }
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "phase": "head",
+        "train_loss": 0.4586680527053662,
+        "train_accuracy": 0.7910447761194029,
+        "val_loss": 0.2427622162633472,
+        "val_accuracy": 0.9166666666666666,
+        "val_balanced_accuracy": 0.625
+      },
+      {
+        "epoch": 2,
+        "phase": "head",
+        "train_loss": 0.1821177873148847,
+        "train_accuracy": 0.9925373134328358,
+        "val_loss": 0.21845296025276184,
+        "val_accuracy": 0.9444444444444444,
+        "val_balanced_accuracy": 0.75
+      },
+      {
+        "epoch": 3,
+        "phase": "head",
+        "train_loss": 0.1694548505900511,
+        "train_accuracy": 0.9925373134328358,
+        "val_loss": 0.22356424894597796,
+        "val_accuracy": 0.9722222222222222,
+        "val_balanced_accuracy": 0.984375
+      },
+      {
+        "epoch": 4,
+        "phase": "head",
+        "train_loss": 0.345436117097513,
+        "train_accuracy": 0.8955223880597015,
+        "val_loss": 0.39180616041024524,
+        "val_accuracy": 0.9166666666666666,
+        "val_balanced_accuracy": 0.625
+      },
+      {
+        "epoch": 5,
+        "phase": "last_block",
+        "train_loss": 0.14940813228265562,
+        "train_accuracy": 1.0,
+        "val_loss": 0.3373048057158788,
+        "val_accuracy": 0.9166666666666666,
+        "val_balanced_accuracy": 0.625
+      },
+      {
+        "epoch": 6,
+        "phase": "last_block",
+        "train_loss": 0.15211769671582465,
+        "train_accuracy": 1.0,
+        "val_loss": 0.32656972275839913,
+        "val_accuracy": 0.9166666666666666,
+        "val_balanced_accuracy": 0.625
+      },
+      {
+        "epoch": 7,
+        "phase": "last_block",
+        "train_loss": 0.1433097408778632,
+        "train_accuracy": 1.0,
+        "val_loss": 0.36578795148266685,
+        "val_accuracy": 0.8888888888888888,
+        "val_balanced_accuracy": 0.5
+      },
+      {
+        "epoch": 8,
+        "phase": "last_block",
+        "train_loss": 0.15875936088277331,
+        "train_accuracy": 0.9925373134328358,
+        "val_loss": 0.35433050162262386,
+        "val_accuracy": 0.8888888888888888,
+        "val_balanced_accuracy": 0.5
+      }
+    ]
+  },
+  "validation": {
+    "status": "development_validation_only_not_independent_test",
+    "accuracy": 0.9722222222222222,
+    "balanced_accuracy": 0.984375,
+    "per_class": {
+      "clean": {
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1": 0.888888888888889,
+        "support": 4
+      },
+      "uncleared": {
+        "precision": 1.0,
+        "recall": 0.96875,
+        "f1": 0.9841269841269841,
+        "support": 32
+      }
+    },
+    "confusion": {
+      "clean": {
+        "clean": 4,
+        "uncleared": 0
+      },
+      "uncleared": {
+        "clean": 1,
+        "uncleared": 31
+      }
+    },
+    "selective": [
+      {
+        "threshold": 0.5,
+        "answered": 36,
+        "total": 36,
+        "coverage": 1.0,
+        "accuracy": 0.9722222222222222
+      },
+      {
+        "threshold": 0.55,
+        "answered": 36,
+        "total": 36,
+        "coverage": 1.0,
+        "accuracy": 0.9722222222222222
+      },
+      {
+        "threshold": 0.6,
+        "answered": 33,
+        "total": 36,
+        "coverage": 0.9166666666666666,
+        "accuracy": 0.9696969696969697
+      },
+      {
+        "threshold": 0.65,
+        "answered": 32,
+        "total": 36,
+        "coverage": 0.8888888888888888,
+        "accuracy": 0.96875
+      },
+      {
+        "threshold": 0.7,
+        "answered": 31,
+        "total": 36,
+        "coverage": 0.8611111111111112,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.75,
+        "answered": 29,
+        "total": 36,
+        "coverage": 0.8055555555555556,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.8,
+        "answered": 29,
+        "total": 36,
+        "coverage": 0.8055555555555556,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.85,
+        "answered": 29,
+        "total": 36,
+        "coverage": 0.8055555555555556,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.9,
+        "answered": 26,
+        "total": 36,
+        "coverage": 0.7222222222222222,
+        "accuracy": 1.0
+      },
+      {
+        "threshold": 0.95,
+        "answered": 19,
+        "total": 36,
+        "coverage": 0.5277777777777778,
+        "accuracy": 1.0
+      }
+    ],
+    "class_names": [
+      "clean",
+      "uncleared"
+    ],
+    "judgment_by_class_index": [
+      "no_deviation",
+      "deviation"
+    ],
+    "predictions": [
+      {
+        "truth": "clean",
+        "predicted": "clean",
+        "confidence": 0.9951896667480469
+      },
+      {
+        "truth": "clean",
+        "predicted": "clean",
+        "confidence": 0.5959718823432922
+      },
+      {
+        "truth": "clean",
+        "predicted": "clean",
+        "confidence": 0.9624035954475403
+      },
+      {
+        "truth": "clean",
+        "predicted": "clean",
+        "confidence": 0.9528853297233582
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9468299150466919
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.5541259050369263
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.8574976325035095
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.5896481275558472
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9461717009544373
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.6191310882568359
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9882579445838928
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.7360012531280518
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9764428734779358
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9691308736801147
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9807515144348145
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9913275837898254
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9991462230682373
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9987151622772217
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9962431192398071
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9837841987609863
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9514096975326538
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9647639393806458
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9844361543655396
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9971907734870911
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9307406544685364
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9960263967514038
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9942679405212402
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.982991635799408
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.705869734287262
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.949682354927063
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.8695425987243652
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "clean",
+        "confidence": 0.6973855495452881
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9216307997703552
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9241060614585876
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.9294882416725159
+      },
+      {
+        "truth": "uncleared",
+        "predicted": "uncleared",
+        "confidence": 0.8574362397193909
+      }
+    ]
+  },
+  "limitation": "Clean controls are few and assistant-reviewed; not an independent specificity test."
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafaf9">
+  <meta name="description" content="Upload restaurant images or video, run local YOLO + MobileNetV3 analysis, and review or export the findings.">
+  <title>DeviationLab | Analysis workspace</title>
+  <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/workspace.css">
+  <script defer src="/i18n.js"></script><script defer src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#analysis">Skip to analysis</a>
+  <div class="rights-banner" role="note">© 2026 DeviationLab Research Team. All rights reserved.</div>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="DeviationLab home"><span class="brand-mark" aria-hidden="true">d<span>l</span></span>DeviationLab</a>
+    <span class="header-context">Analysis workspace</span><span id="apiStatus" class="connection" role="status">Connecting</span>
+  </header>
+  <div class="page">
+    <section class="page-heading" aria-labelledby="pageTitle">
+      <div><p class="eyebrow">Analysis workspace</p><h1 id="pageTitle">Analyze restaurant footage.</h1><p>Upload an image or video, then review the detected deviations.</p></div>
+      <a class="text-link" href="#method">How analysis works <span aria-hidden="true">↗</span></a>
+    </section>
+    <main id="analysis" class="analysis-layout">
+      <aside class="setup" aria-labelledby="setupTitle">
+        <div class="panel-heading"><h2 id="setupTitle">New analysis</h2><span class="step-number">01</span></div>
+        <div class="setup-fields">
+          <label for="scene">Scene</label><select id="scene"><option value="kitchen">Kitchen</option><option value="front">Front of house</option></select>
+          <div class="checks-heading">Checks included</div><ul id="checkList" class="check-list"></ul>
+          <textarea id="prompt" readonly hidden maxlength="4000" aria-label="Analysis checks"></textarea>
+          <label for="media">Image or video</label>
+          <label class="drop" id="drop" for="media">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m-4 4 4-4 4 4M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg>
+            <strong id="fileName">Choose a file or drop it here</strong><small>JPG, PNG, MP4 or MOV</small><small>Up to 30 MB · Video up to 60 seconds</small>
+            <input id="media" type="file" accept="video/mp4,video/quicktime,image/jpeg,image/png">
+          </label>
+          <details id="videoOptions" class="settings"><summary>Sampling &amp; cashier region</summary>
+            <label for="sampleCount">Frames per video</label><select id="sampleCount"><option>3</option><option selected>6</option><option>12</option></select>
+            <p>Images use one frame. More video samples take longer to process.</p>
+            <div class="button-row"><button id="drawRoi" type="button">Draw cashier region</button><button id="clearRoi" type="button">Clear</button></div>
+            <input id="roiValue" readonly aria-label="Cashier region coordinates" placeholder="No region selected">
+            <p id="cashierRoiNote">For YOLO + MobileNetV3, select the area where the cashier stands.</p><p>Use a fixed camera. The region must stay aligned throughout the video.</p>
+          </details>
+          <div class="privacy"><p>Analysis runs with YOLO + MobileNetV3 on this server. Uploaded media is not sent to an external AI provider.</p></div>
+          <button id="analyze" class="primary" disabled><span>Run analysis</span><span aria-hidden="true">↗</span></button><p class="helper engine-note">Checks each sampled frame</p>
+        </div>
+      </aside>
+      <section class="workspace" aria-labelledby="workspaceTitle">
+        <div class="worktop"><div><span class="eyebrow">Evidence workspace</span><h2 id="workspaceTitle">Media &amp; findings</h2></div><div class="exports" aria-label="Export results"><button id="json" disabled>Export JSON</button><button id="csv" disabled>Export CSV</button></div></div>
+        <div class="viewer"><div id="empty"><div class="frame-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="8" width="38" height="32" rx="5"/><circle cx="17" cy="19" r="3"/><path d="m6 34 12-10 8 7 8-11 9 14"/></svg></div><h3>Your media appears here</h3><p>Add a file to preview it before analysis.</p><div class="empty-formats"><span>Images</span><span>Videos up to 60 seconds</span></div></div><video id="video" controls playsinline hidden></video><img id="image" alt="Uploaded media" hidden></div>
+        <div class="statusline"><span class="status-dot" aria-hidden="true"></span><span id="message" role="status" aria-live="polite">Add an image or short video to begin.</span></div>
+        <section id="results" hidden aria-labelledby="resultsTitle">
+          <div class="result-heading"><h2 id="resultsTitle">Findings</h2><span id="modelName"></span></div><div id="metrics" class="metrics"></div><p id="summary" class="helper"></p>
+          <p class="warning">Video findings refer to sampled frames. They do not measure incident counts, unique people or how long a behavior lasted.</p>
+          <div id="events"></div><button id="addEvent" class="text-button">+ Add a missed finding</button>
+          <section class="review-panel" aria-labelledby="reviewTitle"><h3 id="reviewTitle">Review</h3><label for="notes">Notes</label><textarea id="notes" rows="3" placeholder="Record corrections or anything that needs a second look."></textarea><div class="review-actions"><button id="save" class="primary">Save review</button><p class="helper">Exports keep the original predictions and your saved review. Unsaved edits are marked as drafts.</p></div></section>
+        </section>
+      </section>
+    </main>
+    <details id="method" class="method"><summary>How analysis works</summary><div class="method-content"><p>YOLO + MobileNetV3 checks the selected scene. For video, it examines sampled frames, so it may miss events between them. Review each finding before using it.</p><p>Analysis runs on this server. Temporary uploads are deleted after processing; the resulting analysis record is retained for review and export.</p><p>The tool does not identify people. Bread display checks are qualitative. Validate accuracy on your own footage.</p></div></details>
+    <footer><span>DeviationLab</span><span>Restaurant behavior research</span></footer>
+  </div>
+</body>
+</html>
