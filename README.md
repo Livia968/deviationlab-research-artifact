@@ -1,8 +1,10 @@
 # DeviationLab
 
-DeviationLab turns restaurant images and short videos into records of six predefined workplace conditions. YOLO locates relevant regions, and MobileNetV3 classifies the image crops. Researchers can inspect the evidence, record corrections and export both model findings and reviews. The English application runs on your computer with the included models and requires no API key.
+DeviationLab extracts behavioral evidence from images and short videos of everyday work. The current application identifies six compliance-related conditions in bakery-store footage. It first locates the person or area relevant to a check, then classifies that image region. Each observation retains its source location so researchers can examine the finding, record a correction and export the results.
 
-This private research artifact is for editors and reviewers. It contains restricted monitoring footage. Do not make the repository public, enable GitHub Pages, or redistribute the sample media. See [access and media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
+The workflow uses trained YOLO detectors and MobileNetV3 classifiers. The English application runs in a browser with the included models and requires no API key. Researchers can use its observations to study where deviations occur and, with suitable sampling and linked records, how work changes over time.
+
+The repository includes monitoring footage with restricted reuse permissions. Public access to the repository does not grant permission to redistribute that media. See [access and media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
 
 ## Install and start
 
@@ -62,16 +64,20 @@ Use JPG or PNG images, or browser-playable MP4/MOV videos, up to 30 MiB and 60 s
 
 Results are counted by category. If different sampled frames produce different outcomes, the same category can appear in both the issue and uncertain counts. Read [how results are produced](REVIEW-NOTES.md#how-a-result-is-produced) before interpreting the output.
 
+## Use observations in research
+
+Exports retain the model findings and saved corrections separately. Researchers can add store, camera and recording-date identifiers, apply a consistent sampling rule and summarize observations for comparison. For example, the share of assessable sampled moments when a cashier area is unoccupied describes coverage during the sampled period. Linking these summaries to feedback or performance records requires the corresponding identifiers and dates. The application exports observations for this work rather than constructing a store-level dataset automatically.
+
 ## Read the documentation
 
 | File | Purpose |
 |---|---|
 | [REVIEW-NOTES.md](REVIEW-NOTES.md) | Recognition steps, output meanings, privacy and submission scope |
-| [MODEL-STATUS.md](MODEL-STATUS.md) | Frozen model versions, development metrics and training limits |
+| [MODEL-STATUS.md](MODEL-STATUS.md) | Model versions, training choices and development results |
 | [DELIVERY-AUDIT.md](DELIVERY-AUDIT.md) | Completed tests, repeatable verification commands and untested conditions |
 | [EVALUATION-CHECKLIST.md](EVALUATION-CHECKLIST.md) | Protocol for the independent evaluation that remains to be done |
 | [proposal-pipeline/README.md](proposal-pipeline/README.md) | Code structure and the difference between contract tests and web inference |
-| [reproduction/README.md](reproduction/README.md) | Training-source requirements and missing private inputs |
+| [reproduction/README.md](reproduction/README.md) | Training scripts and the source data needed to rerun them |
 | [third-party/README.md](third-party/README.md) | Included third-party notices |
 
 `SHA256SUMS.txt` lists the release files and their hashes. `python tools/verify.py` checks those hashes, sample counts, registries and documented development metrics without running recognition. [MANIFEST.md](MANIFEST.md) describes the directory layout.

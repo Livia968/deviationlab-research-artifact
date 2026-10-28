@@ -2,7 +2,7 @@
 
 ## How a result is produced
 
-The browser previews the selected media locally. Clicking **Run analysis** sends it to the local server. FFmpeg decodes one image or the requested video samples. For a video of duration D and N samples, the timestamps are i × D / N for i = 0 through N - 1, rounded to milliseconds. The last sample is before the end of the clip.
+The workflow turns each selected image or video sample into observations of the conditions listed below. The browser first previews the media. Clicking **Run analysis** sends it to the application server, where FFmpeg decodes the image or samples the video. For a video of duration D and N samples, the timestamps are i × D / N for i = 0 through N - 1, rounded to milliseconds. The last sample is before the end of the clip.
 
 The server applies the three checks for the selected scene to each decoded frame:
 
@@ -15,11 +15,11 @@ The server applies the three checks for the selected scene to each decoded frame
 | Bread display | Trained bakery-region detector box | The display has substantial empty gaps |
 | Cashier occupancy | User-selected employee work area | No employee is visible in that area |
 
-MobileNetV3 assigns the final judgment to each crop identified by YOLO. Mask and head-covering checks use the same head boxes. The person detector cannot distinguish employees from other people, so reviewers should check whether each region is relevant to the task.
+For the five automatically located targets, YOLO identifies relevant regions and MobileNetV3 classifies the resulting crops. Mask and head-covering checks share the same head boxes. The workwear check uses person boxes, so interpreting its findings requires checking that the people shown are employees.
 
-For cashier occupancy, the reviewer selects the employee work area. YOLO person boxes are retained as supporting evidence, but the occupancy classifier uses the whole user-selected work area. The classifier judges the selected area, and the person boxes do not override that judgment. The reviewer must therefore draw the cashier region before running this check.
+For cashier occupancy, the user draws the employee work area before analysis. MobileNetV3 classifies that entire area. YOLO person boxes provide additional evidence without changing the occupancy judgment.
 
-YOLO runs on CPU with image size 960 and detection confidence 0.25. The runtime classifies at most 50 candidate regions per check. MobileNetV3 applies the transforms and ordered labels in [the model registry](proposal-pipeline/models/registry.json). The result is uncertain when the highest class score is below 0.60. Class scores are not calibrated probabilities.
+YOLO runs on CPU with image size 960 and detection confidence 0.25. The runtime classifies at most 50 candidate regions per check. MobileNetV3 applies the transforms and ordered labels in [the model registry](proposal-pipeline/models/registry.json). A highest class score below 0.60 produces an uncertain result. This score is the model’s classification score, not a calibrated probability that a deviation occurred.
 
 ## Read the findings
 
@@ -43,7 +43,7 @@ The original model observations remain in the job record. Editing a finding chan
 - CSV contains `model_check` rows, the latest `saved_human_review` rows and `unsaved_review_draft` rows. Separate these row types before counting or comparing results. Use CSV for tabular summaries and JSON for the complete evidence record.
 - Clicking a timestamp seeks the source video and displays the associated available box. The interface requires the current source media to remain loaded for playback.
 
-The outputs record model assessments of sampled frames. They do not identify employees, count unique people, measure continuous absence or establish grounds for an employment decision.
+The unit of observation is a target in a sampled frame. A series of observations can describe how often a condition appears in the samples, but does not identify employees or establish the number or duration of incidents. These outputs are intended for research, not individual employment decisions.
 
 ## Evidence and submission scope
 
@@ -53,8 +53,8 @@ This repository supplies the prototype component of the [Organization Science sp
 
 ## Access and media restrictions
 
-The project owner authorized the six monitoring clips and derived still images for private testing by editors and reviewers on 26 October 2026. Keep the repository private and grant access only to authorized reviewers or project collaborators. Public distribution of the videos, still images or a package containing them requires separate permission. Do not upload screenshots containing this footage to public issues or documentation.
+The recorded authorization of 26 October 2026 covers private testing of the six monitoring clips and derived still images by editors and reviewers. It does not establish permission for public redistribution. Repository visibility does not expand these media permissions. Obtain separate permission before sharing clips, still images or screenshots outside the authorized review setting.
 
 Inference runs locally without an external LLM request. Job and review records remain on the machine running the server. Restrict access to that machine and its data directory. The local launcher listens only on 127.0.0.1; it is not a secured public hosting setup.
 
-Third-party code and pretrained weights retain their original terms; see [third-party/README.md](third-party/README.md). A private repository does not replace license review or authorize redistribution beyond the original permissions. Original training media are not included.
+Third-party code and pretrained weights retain their original terms; see [third-party/README.md](third-party/README.md). Repository access does not alter those licenses or the permissions attached to the media. Original training media are not included.

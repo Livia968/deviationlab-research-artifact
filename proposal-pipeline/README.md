@@ -20,14 +20,14 @@ The website calls the shared MobileNetV3 adapter through `web/two_stage.py`. The
 
 The HTTP engine identifier remains `yolo` for compatibility with the interface and saved records. It names the local two-stage workflow, not a YOLO-only classifier. `provider_model` is `mobilenetv3-roi-v2`, and the displayed engine label is `YOLO + MobileNetV3`. The status field `api_configured: false` refers to the absent external API; local readiness is reported by `engines.yolo.available`.
 
-## Two-stage contract
+## From a frame to an observation
 
 ```text
 timestamped frame -> relevant region -> crop -> MobileNetV3 judgment
-                  -> evidence record -> separate human review
+                  -> observation with source location -> review -> export
 ```
 
-Five checks use YOLO proposals. Cashier occupancy uses a manually selected work area; its YOLO person boxes are supporting evidence. See [the actual workflow](../REVIEW-NOTES.md) for the mapping and aggregation rules. In `targets.json`, `mobilenetv3_labels` describe conceptual judgments, including uncertainty. The trained class names can differ. Use `models/registry.json` for each checkpoint's class order.
+Five checks use YOLO proposals. Cashier occupancy uses a manually selected work area; its YOLO person boxes are supporting evidence. The [workflow notes](../REVIEW-NOTES.md) explain which region each check uses and how region judgments form a frame-level observation. In `targets.json`, `mobilenetv3_labels` describe conceptual judgments, including uncertainty. The trained class names can differ. Use `models/registry.json` for each checkpoint's class order.
 
 ## Verify this component
 

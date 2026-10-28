@@ -4,7 +4,7 @@ Frozen classifier release: `mobilenetv3-roi-v2`. All six targets use torchvision
 
 ## Saved development results
 
-These scores describe classification of prepared region-of-interest (ROI) crops used during model development and selection. They exclude localization errors and do not estimate the accuracy of the full application on new footage.
+Each classifier examines a cropped image region, such as a head or a bread display. The table reports performance on crops used to select the models. Accuracy is the proportion classified correctly. Balanced accuracy averages the recall for deviation and no deviation, giving the two classes equal weight. These results assess classification of prepared crops. Evaluation on new footage must also account for regions missed or selected incorrectly by YOLO.
 
 | Target | Development accuracy | Balanced accuracy | Data limitation |
 |---|---:|---:|---|
@@ -17,7 +17,7 @@ These scores describe classification of prepared region-of-interest (ROI) crops 
 
 ## Training and runtime interpretation
 
-For four targets, training began with ImageNet weights and updated the classifier head and final network block. Mask coverage and cashier occupancy use frozen ImageNet features with a fitted class-balanced logistic head. Their development-selected class boundary is folded into the saved final layer; it is distinct from the 0.60 runtime abstention threshold.
+For four targets, training began with ImageNet weights and updated the classifier head and final network block. Mask coverage and cashier occupancy use frozen ImageNet features with a fitted class-balanced logistic head. The class boundary selected during development is stored in the final layer and determines the predicted class. The separate 0.60 rule determines whether to report that prediction as uncertain.
 
 Mask coverage uses a 366-pixel resize and 320-pixel center crop with bicubic interpolation. The other targets use a 256-pixel resize and 224-pixel center crop. The registry is the authority for per-target transforms and class order.
 

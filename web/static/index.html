@@ -17,7 +17,7 @@
   </header>
   <div class="page">
     <section class="page-heading" aria-labelledby="pageTitle">
-      <div><p class="eyebrow">Analysis workspace</p><h1 id="pageTitle">Analyze restaurant footage.</h1><p>Check an image or short video for workplace conditions, inspect the evidence and export your findings.</p></div>
+      <div><p class="eyebrow">Analysis workspace</p><h1 id="pageTitle">Extract observations from workplace video.</h1><p>Identify compliance deviations in an image or short video, examine the source evidence and export the observations.</p></div>
       <a class="text-link" href="#method">How analysis works <span aria-hidden="true">↗</span></a>
     </section>
     <main id="analysis" class="analysis-layout">
@@ -30,7 +30,7 @@
           <label for="media">Image or video</label>
           <label class="drop" id="drop" for="media">
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m-4 4 4-4 4 4M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg>
-            <strong id="fileName">Choose a file or drop it here</strong><small>JPG, PNG, MP4 or MOV</small><small>Up to 30 MB · Video up to 60 seconds</small>
+            <strong id="fileName">Choose a file or drop it here</strong><small>JPG, PNG, MP4 or MOV</small><small>Up to 30 MiB · Video up to 60 seconds</small>
             <input id="media" type="file" accept="video/mp4,video/quicktime,image/jpeg,image/png">
           </label>
           <details id="videoOptions" class="settings"><summary>Sampling &amp; cashier region</summary>
@@ -50,13 +50,13 @@
         <div class="statusline"><span class="status-dot" aria-hidden="true"></span><span id="message" role="status" aria-live="polite">Add an image or short video to begin.</span></div>
         <section id="results" hidden aria-labelledby="resultsTitle">
           <div class="result-heading"><h2 id="resultsTitle">Findings</h2><span id="modelName"></span></div><div id="metrics" class="metrics"></div><p id="summary" class="helper"></p>
-          <p class="warning">Each video finding refers to a sampled frame. It does not count unique people or incidents, or measure how long a condition lasted.</p>
+          <p class="warning">Video findings describe sampled moments, not the number or duration of incidents.</p>
           <div id="events"></div><button id="addEvent" class="text-button">+ Add a missed finding</button>
           <section class="review-panel" aria-labelledby="reviewTitle"><h3 id="reviewTitle">Review</h3><label for="notes">Notes</label><textarea id="notes" rows="3" placeholder="Explain corrections or note evidence that needs another look."></textarea><div class="review-actions"><button id="save" class="primary">Save review</button><p class="helper">Exports keep the original predictions and your saved review. Unsaved edits are marked as drafts.</p></div></section>
         </section>
       </section>
     </main>
-    <details id="method" class="method"><summary>How analysis works</summary><div class="method-content"><p>YOLO locates relevant regions, and MobileNetV3 classifies the crops. For the cashier check, you select the employee work area. Videos are assessed at sampled frames, so events between samples may be missed.</p><p>Analysis runs on this server. Temporary uploads are deleted after processing; the resulting analysis record is retained for review and export.</p><p>Inspect each finding before using it. The tool does not identify people, and bread display checks do not count items. Evaluate accuracy on footage representative of your study.</p></div></details>
+    <details id="method" class="method"><summary>How analysis works</summary><div class="method-content"><p>The model first locates the person or area relevant to each check, then classifies that image region. For cashier occupancy, you draw the employee work area. Each finding retains its frame and region for inspection. Video checks use sampled moments, so activity between samples is not assessed.</p><p>Analysis runs on this server using YOLO and MobileNetV3. Temporary uploads are deleted after processing. Findings and saved corrections remain available for export.</p><p>The six checks identify visible conditions. They do not identify employees or count bread items. Before using the observations in a study, assess their accuracy on footage that represents its setting.</p></div></details>
     <footer><span>DeviationLab</span><span>Restaurant behavior research</span></footer>
   </div>
 </body>

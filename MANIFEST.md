@@ -1,6 +1,6 @@
 # Release contents
 
-The private functional prototype is complete. Independent evaluation of recognition accuracy remains pending.
+The release contains a working workflow for extracting, reviewing and exporting observations from workplace images and video. Functional tests cover the application and its bundled models. Independent evaluation of recognition accuracy remains pending.
 
 | Location | Contents |
 |---|---|

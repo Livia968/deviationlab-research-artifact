@@ -13,11 +13,11 @@ These two scripts record how the development checkpoints were produced:
 
 The repository includes trained weights, ordered labels, transforms, thresholds, weight hashes, per-target model cards, the training summary and the training code. The seed recorded by the scripts is 20261026. The mask and cashier thresholds were selected using development validation; their reported metrics are not independent estimates.
 
-## What is not included
+## Inputs needed to repeat training
 
 Full training reproduction requires the original authorized ROI datasets, the original project layout, the cached torchvision ImageNet checkpoint and the intermediate v1 models/report used by the improvement script. These private inputs are not part of this repository. The six walkthrough clips are not replacements for them.
 
-The scripts resolve paths relative to their parent project and expect to live in that project's `scripts/` directory. To repeat training, an authorized researcher must restore those inputs, place the scripts in the original project's `scripts/` directory and check each `PROJECT`, dataset and output path. Running the scripts directly from this folder will not restore the missing inputs. The improvement script additionally requires scikit-learn; it is not an inference dependency.
+The scripts resolve paths relative to the original project and expect to sit in its `scripts/` directory. To repeat training, restore the authorized inputs and project layout, then check the dataset and output paths. The improvement script also requires scikit-learn. This dependency is needed for training, not for running the application.
 
 Dataset references, inventories and checkpoint identity are in `../proposal-pipeline/models/<target>/model-card.json`. Some paths in those records refer to the original training workspace and are provenance references, not missing runtime files.
 
