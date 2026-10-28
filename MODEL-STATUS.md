@@ -4,7 +4,7 @@ Frozen classifier release: `mobilenetv3-roi-v2`. All six targets use torchvision
 
 ## Saved development results
 
-These scores were used during model development and selection. They measure classification of prepared ROI crops, excluding errors in locating those crops. They are not independent accuracy estimates for the website or new footage.
+These scores describe classification of prepared region-of-interest (ROI) crops used during model development and selection. They exclude localization errors and do not estimate the accuracy of the full application on new footage.
 
 | Target | Development accuracy | Balanced accuracy | Data limitation |
 |---|---:|---:|---|
@@ -17,11 +17,11 @@ These scores were used during model development and selection. They measure clas
 
 ## Training and runtime interpretation
 
-Four targets retain the original ImageNet-initialized classifier-head and final-block training. Mask coverage and cashier occupancy use frozen ImageNet features with a fitted class-balanced logistic head. Their development-selected class boundary is folded into the saved final layer; it is distinct from the 0.60 runtime abstention threshold.
+For four targets, training began with ImageNet weights and updated the classifier head and final network block. Mask coverage and cashier occupancy use frozen ImageNet features with a fitted class-balanced logistic head. Their development-selected class boundary is folded into the saved final layer; it is distinct from the 0.60 runtime abstention threshold.
 
 Mask coverage uses a 366-pixel resize and 320-pixel center crop with bicubic interpolation. The other targets use a 256-pixel resize and 224-pixel center crop. The registry is the authority for per-target transforms and class order.
 
-Mask development accuracy is 43/47 (91.49%), with 20 ambiguous validation crops excluded from the binary calculation. Cashier development accuracy is 52/61 (85.25%). Runtime uncertainty changes definite-answer coverage, so these top-one development percentages should not be interpreted as accuracy after abstention.
+Mask development accuracy is 43/47 (91.49%), with 20 ambiguous validation crops excluded from the binary calculation. Cashier development accuracy is 52/61 (85.25%). The runtime can abstain when its score is low. These development percentages count top-class predictions before abstention and therefore do not describe accuracy among the answers retained at runtime.
 
 ## Provenance and remaining work
 
@@ -29,4 +29,4 @@ Each `proposal-pipeline/models/<target>/model-card.json` records training inputs
 
 The three YOLO localizers are frozen separately in `localizers/registry.json`. The [workflow notes](REVIEW-NOTES.md) describe their actual crops and the manually configured cashier-region exception.
 
-Functional checks demonstrate that the website runs the bundled models, not that the predictions are correct. Follow [EVALUATION-CHECKLIST.md](EVALUATION-CHECKLIST.md) to evaluate the full sequence on independent footage. See [reproduction/README.md](reproduction/README.md) for the private inputs required to repeat training.
+Functional checks verify that the website executes the included models. Prediction accuracy requires a separate evaluation. Follow [EVALUATION-CHECKLIST.md](EVALUATION-CHECKLIST.md) to evaluate the full sequence on independent footage. See [reproduction/README.md](reproduction/README.md) for the private inputs required to repeat training.

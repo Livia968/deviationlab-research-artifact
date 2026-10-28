@@ -1,6 +1,6 @@
 # Release contents
 
-Status: complete for private functional prototype delivery. Independent recognition-accuracy validation remains pending.
+The private functional prototype is complete. Independent evaluation of recognition accuracy remains pending.
 
 | Location | Contents |
 |---|---|

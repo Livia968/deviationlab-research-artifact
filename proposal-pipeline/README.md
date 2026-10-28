@@ -1,6 +1,6 @@
 # Pipeline code and model registry
 
-The reviewer application is already connected to the bundled models. Start it from the repository root with `python run.py`; you do not need to supply new weights or configure adapters.
+Start the application from the repository root with `python run.py`. It uses the included model weights and adapters without further configuration.
 
 ## Files and responsibilities
 
@@ -16,7 +16,7 @@ The reviewer application is already connected to the bundled models. Start it fr
 | `targets.json` | Behavioral criteria and conceptual ROI definitions |
 | `tests/` | Contract tests using explicit test doubles |
 
-The generic `TwoStageRecognizer` contract and the website's orchestration are separate code paths. The website uses the shared MobileNetV3 adapter through `web/two_stage.py`. Passing contract tests alone does not verify the website's real recognition path; the recorded HTTP smoke tests cover that path.
+The website calls the shared MobileNetV3 adapter through `web/two_stage.py`. The reusable `TwoStageRecognizer` contract follows a separate code path. Contract tests check that interface, while HTTP smoke tests exercise the website with actual models.
 
 The HTTP engine identifier remains `yolo` for compatibility with the interface and saved records. It names the local two-stage workflow, not a YOLO-only classifier. `provider_model` is `mobilenetv3-roi-v2`, and the displayed engine label is `YOLO + MobileNetV3`. The status field `api_configured: false` refers to the absent external API; local readiness is reported by `engines.yolo.available`.
 
@@ -27,7 +27,7 @@ timestamped frame -> relevant region -> crop -> MobileNetV3 judgment
                   -> evidence record -> separate human review
 ```
 
-Five checks use YOLO proposals. Cashier occupancy uses a manually selected work area; its YOLO person boxes are supporting evidence. See [the actual workflow](../REVIEW-NOTES.md) for the mapping and aggregation rules. The conceptual `mobilenetv3_labels` in `targets.json` describe output judgments, including uncertainty. They are not the trained class names. Use `models/registry.json` for each checkpoint's class order.
+Five checks use YOLO proposals. Cashier occupancy uses a manually selected work area; its YOLO person boxes are supporting evidence. See [the actual workflow](../REVIEW-NOTES.md) for the mapping and aggregation rules. In `targets.json`, `mobilenetv3_labels` describe conceptual judgments, including uncertainty. The trained class names can differ. Use `models/registry.json` for each checkpoint's class order.
 
 ## Verify this component
 

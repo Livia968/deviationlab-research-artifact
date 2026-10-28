@@ -15,23 +15,23 @@ The server applies the three checks for the selected scene to each decoded frame
 | Bread display | Trained bakery-region detector box | The display has substantial empty gaps |
 | Cashier occupancy | User-selected employee work area | No employee is visible in that area |
 
-YOLO class labels do not determine the final compliance judgment. MobileNetV3 classifies each crop. Mask and head-covering checks share the detected head boxes; the mask input is not a separately detected face box. The generic person detector does not identify employees, so people in irrelevant areas can be included. Reviewers must check the evidence.
+MobileNetV3 assigns the final judgment to each crop identified by YOLO. Mask and head-covering checks use the same head boxes. The person detector cannot distinguish employees from other people, so reviewers should check whether each region is relevant to the task.
 
-Cashier occupancy is a documented exception to automatic region localization. YOLO person boxes are retained as supporting evidence, but the occupancy classifier uses the whole user-selected work area. Those person boxes do not override its judgment. The system does not automatically discover the cashier station.
+For cashier occupancy, the reviewer selects the employee work area. YOLO person boxes are retained as supporting evidence, but the occupancy classifier uses the whole user-selected work area. The classifier judges the selected area, and the person boxes do not override that judgment. The reviewer must therefore draw the cashier region before running this check.
 
-YOLO runs on CPU with image size 960 and detection confidence 0.25. The runtime classifies at most 50 candidate regions per check. MobileNetV3 applies the transforms and ordered labels in [the model registry](proposal-pipeline/models/registry.json). A top-class score below 0.60 becomes uncertain. This score is not a calibrated probability.
+YOLO runs on CPU with image size 960 and detection confidence 0.25. The runtime classifies at most 50 candidate regions per check. MobileNetV3 applies the transforms and ordered labels in [the model registry](proposal-pipeline/models/registry.json). The result is uncertain when the highest class score is below 0.60. Class scores are not calibrated probabilities.
 
 ## Read the findings
 
 | Output | Meaning |
 |---|---|
 | Issue observed / `present` | At least one classified region in that sampled frame indicates a deviation |
-| No issue / `absent` | The available classified regions indicate no deviation; this does not prove that every person or area was detected |
+| No issue detected / `absent` | The available classified regions indicate no deviation; this does not prove that every person or area was detected |
 | Uncertain / `uncertain` | A classifier abstained or no relevant region was detected |
 | Configuration required | The cashier region was not supplied, so that check did not run |
 | Failed job | Media decoding or inference failed; the system does not replace the model or fabricate results |
 
-Within a check and frame, any deviation takes priority over uncertainty, and uncertainty takes priority over no deviation. JSON retains the individual region judgments even when the displayed result aggregates them.
+Each check combines its region judgments into one result for the frame: a deviation takes priority, followed by uncertainty and then no deviation. JSON also retains the separate region judgments.
 
 Across a video, the interface groups findings by category and status. A category can be an issue in one frame and uncertain in another, so the two category counts can overlap. **Checks not completed** counts check/frame executions, not unique categories. Sample times identify observations; they are not incident start and end times. Frames between samples may contain missed events.
 
@@ -40,10 +40,10 @@ Across a video, the interface groups findings by category and status. A category
 The original model observations remain in the job record. Editing a finding changes the review draft. **Save review** appends a revision to the review history rather than overwriting the model output.
 
 - JSON includes frame assessments, sampled times, region observations, model identifiers, weight hashes, saved review history and the current unsaved draft.
-- CSV contains `model_check` rows, the latest `saved_human_review` rows and `unsaved_review_draft` rows. Separate these row types before counting or comparing results. CSV is a convenient summary; JSON is the more complete evidence record.
+- CSV contains `model_check` rows, the latest `saved_human_review` rows and `unsaved_review_draft` rows. Separate these row types before counting or comparing results. Use CSV for tabular summaries and JSON for the complete evidence record.
 - Clicking a timestamp seeks the source video and displays the associated available box. The interface requires the current source media to remain loaded for playback.
 
-The outputs support human inspection. They do not establish employee identity, unique person counts, continuous absence duration, or grounds for an employment decision.
+The outputs record model assessments of sampled frames. They do not identify employees, count unique people, measure continuous absence or establish grounds for an employment decision.
 
 ## Evidence and submission scope
 

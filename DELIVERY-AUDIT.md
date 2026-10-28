@@ -1,6 +1,6 @@
 # Verification record
 
-Release scope: private editorial prototype, 26 October 2026. A test marked PASS below checks the stated behavior only. It does not establish recognition accuracy on new footage.
+This record describes functional verification of the private editorial prototype on 26 October 2026. Each PASS applies to the behavior listed, not to recognition accuracy on new footage.
 
 ## Completed checks
 
@@ -43,7 +43,7 @@ The smoke test sends the twelve bundled examples to the local server, checks job
 
 Specification: `mobilenetv3-roi-v2`. `tools/verify.py` compares every documented target's development accuracy and balanced accuracy with the saved model card and training summary. The percentages in [MODEL-STATUS.md](MODEL-STATUS.md) use two decimal places. The model cards retain full precision and the class order. The producing training scripts are included in `reproduction/`.
 
-For mask coverage, the saved correct/total count is 43/47; for cashier occupancy it is 52/61. Ambiguous mask validation crops are excluded from that binary calculation. These are selected development-crop metrics. The numeric consistency check cannot turn them into independent video-level accuracy estimates.
+For mask coverage, the saved correct/total count is 43/47; for cashier occupancy it is 52/61. Ambiguous mask validation crops are excluded from that binary calculation. These are selected development-crop metrics. Checking that these numbers agree across files does not establish accuracy on independent videos.
 
 ## Tested environment and limits
 
@@ -52,3 +52,7 @@ The application was tested in both the development environment and a newly creat
 The first model import exceeded the smoke client's original 30-second request timeout, although the server completed the job. The delivered smoke client allows 120 seconds per request and passed the full rerun. Allow extra time for the first analysis. A GPU is not required by this implementation. Windows/Linux execution, public hosting, concurrent multi-user load and long-running service operation have not been validated in this release.
 
 Independent evaluation of localization and classification on new stores/cameras remains pending. Full retraining cannot be reproduced from this repository alone because the original restricted training datasets are absent. No cloud deployment or manuscript modification is part of this release.
+
+## Writing revision
+
+The 28 October 2026 revision clarifies the documentation and interface text. Model weights, classification rules, sampling and export schemas are unchanged. The execution records above describe the original functional verification.

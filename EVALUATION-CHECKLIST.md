@@ -1,6 +1,6 @@
 # Independent evaluation plan
 
-Status: pending. This checklist describes work required before reporting accuracy on new footage. The included walkthrough tests do not satisfy this plan.
+Independent evaluation is pending. Before reporting accuracy on new footage, complete the steps below. The walkthrough tests verify execution only.
 
 ## Freeze the system
 
@@ -8,9 +8,9 @@ Record the release commit, weight hashes, class mappings, region definitions, tr
 
 ## Build the reference set
 
-Use authorized footage from stores and cameras excluded from training and model selection. Include ordinary operating periods as well as candidate deviations. Keep clips from the same source grouped when splitting data to limit leakage between near-duplicate frames.
+Use authorized footage from stores and cameras excluded from training and model selection. Include ordinary operating periods as well as candidate deviations. Keep clips from the same source in the same data split so near-duplicate frames cannot appear in both development and evaluation sets.
 
-Have two coders independently label each target/frame as deviation, no deviation, unclear or inapplicable without seeing model predictions. Retain both initial judgments, document disagreement resolution and record the relevant region. For cashier occupancy, specify who draws the region and what counts as the employee work area.
+Have two coders label each target in each frame independently, without seeing the model predictions. Use four labels: deviation, no deviation, unclear and inapplicable. Retain both initial judgments, document disagreement resolution and record the relevant region. For cashier occupancy, specify who draws the region and what counts as the employee work area.
 
 ## Measure the separate stages and full sequence
 
@@ -21,4 +21,4 @@ Have two coders independently label each target/frame as deviation, no deviation
 5. Compare original model observations and separately saved human-reviewed results against the independent labels. Report review time and coder agreement.
 6. Measure processing time and computing cost on declared hardware. Document failure cases such as occlusion, camera movement and people outside the employee area.
 
-Do not count sampled observations as unique people or continuous incidents. Any model change prompted by the test results requires a new independent evaluation set or must be explicitly reported as development tuning.
+Do not count sampled observations as unique people or continuous incidents. If test results inform a model change, report that work as development tuning and use a new independent set to evaluate the revised model.

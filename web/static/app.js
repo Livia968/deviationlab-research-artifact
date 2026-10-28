@@ -36,7 +36,7 @@ function updateInterface() {
   const cashier = targets.includes('cashier_vacancy');
   $('drawRoi').disabled = busy || !cashier; $('clearRoi').disabled = busy || !cashier;
   $('cashierRoiNote').textContent = spec?.cashier_roi_required
-    ? 'For YOLO + MobileNetV3, select the area where the cashier stands. Without it, this check cannot run.'
+    ? 'Select the employee work area behind the cashier counter to run this check.'
     : 'A cashier region can help focus the check. It does not measure how long the station was unattended.';
 }
 $('scene').onchange = () => { roi = null; updateRoi(); updateInterface(); };
@@ -144,7 +144,7 @@ function renderSummary() {
   $('metrics').replaceChildren(...[[observed, 'Issue categories'], [uncertain, 'Uncertain categories'], [notRun, 'Checks not completed']].map(([count, title]) => {
     const metric = element('div', 'metric'); metric.append(element('strong', '', count), element('span', '', title)); return metric;
   }));
-  $('summary').textContent = 'Model results before review. Repeated samples are grouped by category.';
+  $('summary').textContent = 'Original model results, grouped by category across sampled frames.';
 }
 function renderEvents() {
   const container = $('events'); container.replaceChildren();
@@ -200,8 +200,8 @@ function renderEvents() {
     grid.append(remove); card.append(edit); container.append(card);
   });
   if (!count) container.append(element('p', 'empty-results', events.some(e => e.status === 'uncertain')
-    ? 'No confirmed findings in this draft. Include uncertain findings or open all model checks to review the remaining results.'
-    : 'No findings in this draft. This does not establish compliance. Review all model checks for incomplete assessments.'));
+    ? 'No issue findings in this draft. Include uncertain findings or open All model checks to inspect the other results.'
+    : 'No findings in this draft. Open All model checks to inspect uncertain or incomplete assessments before interpreting this result.'));
 }
 function setBusy(value) {
   busy = value;

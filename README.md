@@ -1,6 +1,6 @@
 # DeviationLab
 
-DeviationLab checks restaurant images and short videos for six predefined conditions. It runs YOLO region detection and MobileNetV3 classification on your computer, then lets you review the findings and export the evidence. The interface is in English. You do not need an API key or a model-selection step.
+DeviationLab turns restaurant images and short videos into records of six predefined workplace conditions. YOLO locates relevant regions, and MobileNetV3 classifies the image crops. Researchers can inspect the evidence, record corrections and export both model findings and reviews. The English application runs on your computer with the included models and requires no API key.
 
 This private research artifact is for editors and reviewers. It contains restricted monitoring footage. Do not make the repository public, enable GitHub Pages, or redistribute the sample media. See [access and media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
 
@@ -37,13 +37,13 @@ py -3.13 -m venv .venv
 
 Open **http://127.0.0.1:7891/**. Keep the terminal open while using the page. Press Ctrl+C in that terminal to stop it. Do not double-click `index.html`: that opens an HTML file without the analysis server.
 
-The first dependency installation needs internet access. The application uses the bundled weights for inference and does not send images to an LLM provider. The tested platform is macOS with Python 3.13; the Windows and Linux instructions are provided for portability but have not been independently tested. FFmpeg and the Python environment are not included in the ZIP. The first analysis also loads the model libraries and weights, so allow extra time before expecting progress.
+Installation requires internet access, Python and FFmpeg. Once installed, the application analyzes media with the included weights without sending images to an LLM provider. The local installation was tested on macOS with Python 3.13. The Windows and Linux commands have not been independently tested. Allow extra time for the first analysis while the model libraries and weights load.
 
 ## Run a first analysis
 
 1. Select **Kitchen** and upload `samples/kitchen-mask.mp4`.
 2. Open **Sampling & cashier region** and choose **3** frames for a quick test. Click **Run analysis**. Uploading or playing the video alone does not run inference.
-3. Wait for **Analysis complete**. Review the issue and uncertain categories. Click a timestamp to inspect its frame and any available region box.
+3. Wait for **Analysis complete**. Inspect the findings, including those marked uncertain. Click a timestamp to inspect its frame and any available region box.
 4. Edit findings or add a missed finding if needed. Save the review before exporting if you want it recorded as a saved review.
 5. Click **Export JSON** or **Export CSV**. The files download to your browser's download folder.
 
@@ -60,7 +60,7 @@ The bundled clips are walkthrough examples, not labeled accuracy tests. Their fi
 
 Use JPG or PNG images, or browser-playable MP4/MOV videos, up to 30 MiB and 60 seconds. Decoded dimensions must not exceed 4096 pixels on either axis. Images produce one frame assessment; videos use 3, 6 or 12 sampled frames. CPU processing may take several minutes. This application does not track people or calculate continuous incident durations.
 
-The result count refers to categories, not people. A category can appear in both the issue count and the uncertain count when different sampled frames have different outcomes. Read [how results are produced](REVIEW-NOTES.md#how-a-result-is-produced) before interpreting the output.
+Results are counted by category. If different sampled frames produce different outcomes, the same category can appear in both the issue and uncertain counts. Read [how results are produced](REVIEW-NOTES.md#how-a-result-is-produced) before interpreting the output.
 
 ## Read the documentation
 
@@ -89,4 +89,4 @@ The result count refers to categories, not people. A category can appear in both
 | Findings are uncertain or disagree with the image | Inspect the frame and region. Record a human correction; do not interpret uncertainty as compliance. |
 | Queue full | Wait for the active analysis. This local server processes one job at a time. |
 
-Job records and review history are stored in `~/.deviationlab-review/jobs/`, outside the repository. Uploaded media and decoded frames are processed in temporary files; job records retain their source hash and findings. Do not commit runtime records. A repository upload makes the code available to authorized collaborators; it does not host the website. This release does not change the existing cloud deployment.
+Job records and review history are stored in `~/.deviationlab-review/jobs/`, outside the repository. Uploaded media and decoded frames are processed in temporary files; job records retain their source hash and findings. Do not commit runtime records. The repository provides code for authorized collaborators to run. Updating it does not update the existing cloud deployment.

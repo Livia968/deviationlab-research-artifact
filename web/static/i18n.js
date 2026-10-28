@@ -16,9 +16,12 @@ function findingLabel(event) {
   return englishText(event.behavior, COPY.targets[event.deviation_type] || 'Finding');
 }
 const EVIDENCE_COPY = Object.freeze({
+  'MobileNetV3 classified the localized regions; review the region observations in the export.': 'The model classified the detected regions. The export includes the judgment for each region.',
+  'No relevant region was localized. Compliance cannot be determined.': 'The model could not locate a relevant region, so this check is uncertain.',
+  'Draw the cashier employee area to run this check.': 'Select the employee work area behind the cashier counter to run this check.',
   'At least one visible head was classified as not wearing a head covering.': 'The model classified at least one visible head as missing a cap or hairnet.',
   'No reliable head was localized, or at least one localized head had insufficient evidence.': 'The model could not reliably locate a head, or had too little evidence for at least one head.',
-  'All localized heads were classified as wearing a head covering; this does not guarantee that every person in the image was localized.': 'All detected heads had a cap or hairnet. The model may have missed people in the image.',
+  'All localized heads were classified as wearing a head covering; this does not guarantee that every person in the image was localized.': 'The model classified all detected heads as having a cap or hairnet. It may have missed other people.',
   'At least one localized target was classified as uncovered.': 'The model classified at least one detected face as not fully covered by a mask.',
   'At least one localized target was classified as ordinary_clothes.': 'The model classified at least one detected person as wearing ordinary clothes rather than workwear or an apron.',
   'The model did not produce a reliable binary decision covering all localized targets.': 'The model could not make a reliable decision for every detected target.',
