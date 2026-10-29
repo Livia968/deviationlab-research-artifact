@@ -51,7 +51,7 @@ Installation requires internet access, Python and FFmpeg. Once installed, the ap
 
 Choose **Kitchen** for head covering, mask coverage and workwear. Choose **Front of house** for table clearance, bread display and cashier occupancy. Draw the employee work area before testing cashier occupancy. Select the space behind the counter where the employee stands, not the whole store or customer area. Keep that region fixed for a stationary camera. Without a region, the cashier check reports that configuration is required.
 
-A successful smoke test means processing completed, not that every judgment was correct. Historical sample media may remain accessible in earlier Git commits; removal from the current version does not erase that history.
+A successful smoke test means processing completed, not that every judgment was correct. Published Git history was rewritten on 29 October 2026 to remove the sample folder. Old cached commit URLs and previously downloaded copies may still contain media. Collaborators should clone the cleaned repository again rather than merge an old clone back into it.
 
 ## What the page supports
 

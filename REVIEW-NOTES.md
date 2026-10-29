@@ -57,7 +57,7 @@ The author has withdrawn the sample images and videos from the current public re
 
 Historical test-case settings and execution records are retained as text, without embedded media. They document prior functional tests and are not an accuracy benchmark. The optional smoke test requires an explicitly supplied private folder; a normal installation and analysis of your own media do not require these test files.
 
-Historical Git commits and previous downloads can still contain removed media; deleting files from the current version does not erase repository history or revoke copies already downloaded. Earlier permission for some clips was limited to private editorial and reviewer testing, not public redistribution. Do not treat historical availability as permission to reuse or redistribute media.
+Published Git history was rewritten on 29 October 2026 to remove `samples/` from all commits. The release tag also points to a media-free version. Old cached commit URLs and previous downloads may still contain removed media; history rewriting cannot revoke copies already downloaded. GitHub Support may need to purge cached views and unreachable objects. Earlier permission for some clips was limited to private editorial and reviewer testing, not public redistribution. Do not treat historical availability as permission to reuse or redistribute media. Collaborators should re-clone the cleaned repository and must not merge or push old history back into it.
 
 Inference runs locally without an external LLM request. Job and review records remain on the machine running the server. Restrict access to that machine and its data directory. The local launcher listens only on 127.0.0.1; it is not a secured public hosting setup.
 

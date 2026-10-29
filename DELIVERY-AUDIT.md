@@ -8,6 +8,11 @@ at the author's request. The results below are historical records, not a claim
 that test media are distributed with the current version. Private local author
 copies are retained. The application and model weights were not changed.
 
+The public history was subsequently rewritten to remove `samples/` from all ten
+historical commits. All non-sample file contents were preserved during that
+rewrite; this follow-up changes only cleanup guidance and release hashes.
+Old cached URLs and downloaded copies are outside the scope of Git-ref verification.
+
 ## Current checks — 29 October 2026
 
 | Check | Result | Evidence |
