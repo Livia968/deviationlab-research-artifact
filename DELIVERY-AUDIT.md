@@ -1,25 +1,31 @@
 # Verification record
 
-This record describes functional verification of the private editorial prototype on 26 October 2026. Each PASS applies to the behavior listed, not to recognition accuracy on new footage.
+This record separates the sample replacement on 29 October 2026 from the original
+prototype verification. A completed execution does not establish recognition accuracy.
 
-## Completed checks
+## Current checks — 29 October 2026
 
 | Check | Result | Evidence |
 |---|---|---|
-| Server and workflow unit tests | PASS: 24 tests, comprising 19 server tests and 5 contract tests | Test sources in `web/tests/` and `proposal-pipeline/tests/` |
-| Real image/video execution | PASS: 6 JPGs and 6 MP4s; 1 frame per image and 3 samples per video | [functional-audit.json](functional-audit.json) |
-| Fresh dependency installation | PASS: new isolated Python environment; `pip check` reports no broken requirements | Environment recorded in `functional-audit.json` |
-| Model identity | PASS: 6 classifier checkpoints and 3 localizers match their registries | `python tools/verify.py` |
-| Browser interaction | PASS: kitchen/front video analysis, manual cashier region, timestamp selection and review save | Manual browser check on the local application |
-| Browser exports | PASS: inspected a six-frame JSON/CSV export with 18 model-check rows and saved review | Manual inspection of browser downloads |
-| Presentation | PASS: English interface, wide/narrow layout and author-team notice | Manual browser check; no model selector |
-| Release integrity | PASS: complete file inventory and ZIP archive check | `SHA256SUMS.txt` and the project delivery verification report |
+| Workflow and server tests | PASS: 5 contract tests and 19 server tests | `proposal-pipeline/tests/` and `web/tests/` |
+| Actual image and video inference | PASS: ten PNGs and one MP4; one frame per image and three sampled video frames | `functional-audit.json` |
+| Review persistence | PASS: a test review saved and read back for every sample | `functional-audit.json` |
+| Model identity and documented metrics | Six classifiers and three localizers checked against their registries | `python tools/verify.py` |
+| Release integrity | File hashes and exact sample inventory checked | `SHA256SUMS.txt` and `python tools/verify.py` |
 
-The HTTP smoke test's cashier rectangle is a broad central geometry test, not an annotated reference region. The result values in `functional-audit.json` are execution records, not correctness labels.
+The cashier rectangles are the employee areas documented in `samples/README.md`.
+Images 02 and 09 have uncertain visual references; 08 and 10 remain known missed
+cases. Other checks in a scene are not validated merely because the intended check
+ran. The video tests sampling, not continuous event tracking. There is no suitable
+mask-coverage sample in this privacy-reviewed set.
+
+Models, thresholds, application code and interface are unchanged by this sample
+replacement. The report records input hashes, predictions, environment, review
+persistence and test time. These demonstrations are not an accuracy benchmark.
 
 ## Repeat the checks
 
-Activate the installed Python environment and run these commands from the repository root:
+Activate the installed Python environment and run from the repository root:
 
 ```sh
 python tools/verify.py
@@ -29,30 +35,45 @@ python proposal-pipeline/verify_artifact.py
 python proposal-pipeline/verify_models.py
 ```
 
-The integrity checker uses only Python's standard library. The server tests require the installed dependencies and FFmpeg; they create a temporary local HTTP server and do not require `run.py` to be running.
+The integrity checker uses Python's standard library. Server tests require the
+installed dependencies and FFmpeg and create a temporary local HTTP server.
 
-To exercise the actual models, start `python run.py` in one terminal. In a second terminal, activate the same environment and run:
+To exercise the actual models, start `python run.py` in one terminal. In another
+terminal using the same environment, run:
 
 ```sh
 python tools/smoke.py
 ```
 
-The smoke test sends the twelve bundled examples to the local server, checks job completion and saves a test review for each job. It prints the result records and a final `status: pass` report. It creates local job records under the server's configured data directory. It does not call a paid API or accept an external server URL. To use another local port, pass `--url http://127.0.0.1:7892`.
+The smoke test reads the eleven files in `samples/manifest.json`, checks their
+hashes, runs inference and saves a test review for each job. It creates job records
+in the server's data directory, not in this repository. It makes no paid API
+requests and refuses external URLs. For another local port use
+`--url http://127.0.0.1:7892`. Allow extra time for the first model load.
 
-## Numeric evidence check
+## Earlier verification — 26 October 2026
 
-Specification: `mobilenetv3-roi-v2`. `tools/verify.py` compares every documented target's development accuracy and balanced accuracy with the saved model card and training summary. The percentages in [MODEL-STATUS.md](MODEL-STATUS.md) use two decimal places. The model cards retain full precision and the class order. The producing training scripts are included in `reproduction/`.
+The original release passed a fresh dependency installation, `pip check`, 24 unit
+tests and twelve inference cases using the former sample set. Browser checks
+covered kitchen/front-of-house video analysis, a manually drawn cashier region,
+timestamp selection, review saving, JSON/CSV exports and wide/narrow English
+layouts. Those browser checks were not repeated for this media-only replacement.
+The old execution report remains in Git history; the current report covers only
+the replacement samples. Historical media permissions do not grant public reuse
+rights. See `REVIEW-NOTES.md`.
 
-For mask coverage, the saved correct/total count is 43/47; for cashier occupancy it is 52/61. Ambiguous mask validation crops are excluded from that binary calculation. These are selected development-crop metrics. Checking that these numbers agree across files does not establish accuracy on independent videos.
+## Numeric evidence and limits
 
-## Tested environment and limits
+Specification: `mobilenetv3-roi-v2`. The integrity checker compares development
+accuracy and balanced accuracy in `MODEL-STATUS.md` with saved model cards and the
+training summary. For mask coverage the saved correct/total count is 43/47; for
+cashier occupancy it is 52/61. Ambiguous mask validation crops are excluded from
+that binary calculation. These are selected development-crop metrics, not
+estimates of accuracy on independent videos.
 
-The application was tested in both the development environment and a newly created virtual environment on macOS 26.6.2 (arm64), Python 3.13.6, with PyTorch 2.14.1, torchvision 0.29.1, Ultralytics 8.4.174 and FFmpeg. The new environment installed `requirements.txt`, passed `pip check`, all 24 unit tests and all twelve real-inference cases. Cached download files were reused where available; installed packages were not copied from the development environment. `functional-audit.json` records the direct dependency versions.
-
-The first model import exceeded the smoke client's original 30-second request timeout, although the server completed the job. The delivered smoke client allows 120 seconds per request and passed the full rerun. Allow extra time for the first analysis. A GPU is not required by this implementation. Windows/Linux execution, public hosting, concurrent multi-user load and long-running service operation have not been validated in this release.
-
-Independent evaluation of localization and classification on new stores/cameras remains pending. Full retraining cannot be reproduced from this repository alone because the original restricted training datasets are absent. No cloud deployment or manuscript modification is part of this release.
-
-## Writing revision
-
-The 28 October 2026 revision clarifies the documentation and interface text. Model weights, classification rules, sampling and export schemas are unchanged. The execution records above describe the original functional verification.
+The current run used macOS arm64, Python 3.13.6 and the dependency versions in
+`functional-audit.json`. Windows/Linux execution, public hosting, concurrent load
+and long-running operation were not tested here. Independent evaluation on new
+stores and cameras remains pending. Full retraining requires restricted datasets
+that are not included. No cloud deployment or manuscript modification is part
+of this replacement.

@@ -53,7 +53,11 @@ This repository supplies the prototype component of the [Organization Science sp
 
 ## Access and media restrictions
 
-The recorded authorization of 26 October 2026 covers private testing of the six monitoring clips and derived still images by editors and reviewers. It does not establish permission for public redistribution. Repository visibility does not expand these media permissions. Obtain separate permission before sharing clips, still images or screenshots outside the authorized review setting.
+The current sample folder contains ten edited image derivatives selected by the author team. Annotation strokes were locally inpainted, identifying details were covered with opaque fills, and the images were lightly sharpened and enlarged. No visible face was found during review. These edits do not establish anonymity: people or locations may still be identifiable from bodies, clothing or context. They also do not establish consent, copyright permission or IRB clearance. No unrestricted media reuse license is granted by repository access.
+
+The six earlier monitoring clips and their JPG frames were removed under their old sample names. Only the dining-table clip is retained as `demo-11-table-clearance.mp4`: all 64 frames were reviewed, with no visible people or faces found, and the author confirmed rights and authorized public inclusion on 29 October 2026. Its timestamp and location context remain visible. It is an eight-second, silent clip, not a continuous-incident benchmark. No other original video is included.
+
+Earlier permission for the other clips was limited to private editorial and reviewer testing, not public redistribution. Historical Git commits and previous downloads can still contain those files; deleting them from the current version does not erase repository history. Use the current sample inventory rather than old archives.
 
 Inference runs locally without an external LLM request. Job and review records remain on the machine running the server. Restrict access to that machine and its data directory. The local launcher listens only on 127.0.0.1; it is not a secured public hosting setup.
 

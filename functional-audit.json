@@ -1,254 +1,251 @@
 {
   "status": "pass",
   "scope": "functional integration, not accuracy validation",
+  "tested_at_utc": "2026-10-29T01:25:07.435556+00:00",
   "cases": [
     {
-      "file": "kitchen-mask.jpg",
+      "file": "demo-01-head-covering.png",
+      "sha256": "c360b71d2e43be48426aeffefad684e382e1a792bd914cb13496bc08fc9525c9",
       "state": "completed",
       "frames": 1,
-      "seconds": 0.52,
+      "seconds": 1.04,
       "review_saved": true,
+      "cashier_roi": null,
+      "target": "cap_absent",
+      "visual_reference": "present",
       "statuses": [
-        {
-          "cap_absent": "uncertain",
-          "mask_uncovered": "uncertain",
-          "uniform_absent": "uncertain"
-        }
-      ]
-    },
-    {
-      "file": "kitchen-mask.mp4",
-      "state": "completed",
-      "frames": 3,
-      "seconds": 1.54,
-      "review_saved": true,
-      "statuses": [
-        {
-          "cap_absent": "uncertain",
-          "mask_uncovered": "uncertain",
-          "uniform_absent": "uncertain"
-        },
-        {
-          "cap_absent": "absent",
-          "mask_uncovered": "present",
-          "uniform_absent": "uncertain"
-        },
-        {
-          "cap_absent": "absent",
-          "mask_uncovered": "present",
-          "uniform_absent": "absent"
-        }
-      ]
-    },
-    {
-      "file": "kitchen-workwear.jpg",
-      "state": "completed",
-      "frames": 1,
-      "seconds": 0.52,
-      "review_saved": true,
-      "statuses": [
-        {
-          "cap_absent": "uncertain",
-          "mask_uncovered": "uncertain",
-          "uniform_absent": "uncertain"
-        }
-      ]
-    },
-    {
-      "file": "kitchen-workwear.mp4",
-      "state": "completed",
-      "frames": 3,
-      "seconds": 1.55,
-      "review_saved": true,
-      "statuses": [
-        {
-          "cap_absent": "uncertain",
-          "mask_uncovered": "uncertain",
-          "uniform_absent": "present"
-        },
-        {
-          "cap_absent": "uncertain",
-          "mask_uncovered": "uncertain",
-          "uniform_absent": "uncertain"
-        },
         {
           "cap_absent": "present",
-          "mask_uncovered": "present",
-          "uniform_absent": "absent"
+          "mask_uncovered": "absent",
+          "uniform_absent": "uncertain"
         }
-      ]
+      ],
+      "target_status": "present"
     },
     {
-      "file": "kitchen-headwear.jpg",
+      "file": "demo-02-workwear.png",
+      "sha256": "881cd12a0292baa6b4736a335d5f98a8d694aa7b252e2fcc7e551abf93712256",
       "state": "completed",
       "frames": 1,
-      "seconds": 0.51,
+      "seconds": 1.53,
       "review_saved": true,
+      "cashier_roi": null,
+      "target": "uniform_absent",
+      "visual_reference": "uncertain",
       "statuses": [
         {
           "cap_absent": "absent",
           "mask_uncovered": "absent",
-          "uniform_absent": "absent"
+          "uniform_absent": "present"
         }
-      ]
+      ],
+      "target_status": "present"
     },
     {
-      "file": "kitchen-headwear.mp4",
+      "file": "demo-03-table-clearance.png",
+      "sha256": "545aaacb60393e9f29d2888b4c59d4570d3fccb6de74bfc7eb223573a980ef74",
       "state": "completed",
-      "frames": 3,
-      "seconds": 1.53,
+      "frames": 1,
+      "seconds": 1.56,
       "review_saved": true,
+      "cashier_roi": null,
+      "target": "table_uncleared",
+      "visual_reference": "present",
       "statuses": [
         {
-          "cap_absent": "uncertain",
+          "table_uncleared": "present",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "not_applicable"
+        }
+      ],
+      "target_status": "present"
+    },
+    {
+      "file": "demo-04-bread-display.png",
+      "sha256": "52ab00e52729c73930f520474f12bd9d30fe749e56ea8acc321c145a1794cdb0",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 1.05,
+      "review_saved": true,
+      "cashier_roi": null,
+      "target": "bread_shelf_underfilled",
+      "visual_reference": "present",
+      "statuses": [
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "not_applicable"
+        }
+      ],
+      "target_status": "present"
+    },
+    {
+      "file": "demo-05-cashier-area.png",
+      "sha256": "1af638640bad2a70ebba18fb885d7394143de700a6a95c18f236226c08d45ffb",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 1.04,
+      "review_saved": true,
+      "cashier_roi": [
+        0.06,
+        0.1,
+        0.49,
+        0.43
+      ],
+      "target": "cashier_vacancy",
+      "visual_reference": "present",
+      "statuses": [
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "present"
+        }
+      ],
+      "target_status": "present"
+    },
+    {
+      "file": "demo-06-bread-display.png",
+      "sha256": "1a7586c1b864c435dd5fda5bf37cd1f270f883abe8d6d92e1aed087d15fd04f6",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 1.03,
+      "review_saved": true,
+      "cashier_roi": null,
+      "target": "bread_shelf_underfilled",
+      "visual_reference": "present",
+      "statuses": [
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "not_applicable"
+        }
+      ],
+      "target_status": "present"
+    },
+    {
+      "file": "demo-07-cashier-area.png",
+      "sha256": "4af3bf6b800c7a17fdecb22a96729b444b299ae40603858889563b4cf03a34ea",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 1.03,
+      "review_saved": true,
+      "cashier_roi": [
+        0.11,
+        0.14,
+        0.87,
+        0.41
+      ],
+      "target": "cashier_vacancy",
+      "visual_reference": "present",
+      "statuses": [
+        {
+          "table_uncleared": "uncertain",
+          "bread_shelf_underfilled": "present",
+          "cashier_vacancy": "present"
+        }
+      ],
+      "target_status": "present"
+    },
+    {
+      "file": "demo-08-head-covering.png",
+      "sha256": "3692cbec5419a28e00a22512a32fe2badc1321ec79408b7b3f953f763326da74",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 1.03,
+      "review_saved": true,
+      "cashier_roi": null,
+      "target": "cap_absent",
+      "visual_reference": "present",
+      "statuses": [
+        {
+          "cap_absent": "absent",
           "mask_uncovered": "uncertain",
-          "uniform_absent": "absent"
-        },
-        {
-          "cap_absent": "absent",
-          "mask_uncovered": "present",
-          "uniform_absent": "absent"
-        },
-        {
-          "cap_absent": "absent",
-          "mask_uncovered": "present",
-          "uniform_absent": "absent"
+          "uniform_absent": "uncertain"
         }
-      ]
+      ],
+      "target_status": "absent"
     },
     {
-      "file": "front-tables.jpg",
+      "file": "demo-09-workwear.png",
+      "sha256": "daf3142121334642d139c80b0b67e5d417fc1a8b74d0701961f7c2bcd5033532",
       "state": "completed",
       "frames": 1,
       "seconds": 0.52,
       "review_saved": true,
+      "cashier_roi": null,
+      "target": "uniform_absent",
+      "visual_reference": "uncertain",
       "statuses": [
         {
-          "table_uncleared": "present",
-          "bread_shelf_underfilled": "uncertain",
-          "cashier_vacancy": "not_applicable"
+          "cap_absent": "absent",
+          "mask_uncovered": "absent",
+          "uniform_absent": "uncertain"
         }
-      ]
+      ],
+      "target_status": "uncertain"
     },
     {
-      "file": "front-tables.mp4",
-      "state": "completed",
-      "frames": 3,
-      "seconds": 1.54,
-      "review_saved": true,
-      "statuses": [
-        {
-          "table_uncleared": "present",
-          "bread_shelf_underfilled": "uncertain",
-          "cashier_vacancy": "not_applicable"
-        },
-        {
-          "table_uncleared": "present",
-          "bread_shelf_underfilled": "uncertain",
-          "cashier_vacancy": "not_applicable"
-        },
-        {
-          "table_uncleared": "present",
-          "bread_shelf_underfilled": "uncertain",
-          "cashier_vacancy": "not_applicable"
-        }
-      ]
-    },
-    {
-      "file": "front-bread.jpg",
+      "file": "demo-10-table-clearance.png",
+      "sha256": "cfb020aadc117ba3fc3f2adab7de7923cc56966de5f07d108aa79b0cc5507d3b",
       "state": "completed",
       "frames": 1,
-      "seconds": 0.52,
+      "seconds": 0.51,
       "review_saved": true,
+      "cashier_roi": null,
+      "target": "table_uncleared",
+      "visual_reference": "present",
       "statuses": [
         {
-          "table_uncleared": "uncertain",
+          "table_uncleared": "absent",
           "bread_shelf_underfilled": "uncertain",
           "cashier_vacancy": "not_applicable"
         }
-      ]
+      ],
+      "target_status": "absent"
     },
     {
-      "file": "front-bread.mp4",
+      "file": "demo-11-table-clearance.mp4",
+      "sha256": "dd3afad285dd599ab65a84903e59c41b1de66d92fa5836fa539befcbee0bfb01",
       "state": "completed",
       "frames": 3,
-      "seconds": 1.03,
+      "seconds": 1.52,
       "review_saved": true,
+      "cashier_roi": null,
+      "target": "table_uncleared",
+      "visual_reference": "present",
       "statuses": [
         {
-          "table_uncleared": "uncertain",
+          "table_uncleared": "present",
           "bread_shelf_underfilled": "uncertain",
           "cashier_vacancy": "not_applicable"
         },
         {
-          "table_uncleared": "uncertain",
+          "table_uncleared": "present",
           "bread_shelf_underfilled": "uncertain",
           "cashier_vacancy": "not_applicable"
         },
         {
-          "table_uncleared": "uncertain",
+          "table_uncleared": "present",
           "bread_shelf_underfilled": "uncertain",
           "cashier_vacancy": "not_applicable"
         }
-      ]
-    },
-    {
-      "file": "front-cashier.jpg",
-      "state": "completed",
-      "frames": 1,
-      "seconds": 1.03,
-      "review_saved": true,
-      "statuses": [
-        {
-          "table_uncleared": "uncertain",
-          "bread_shelf_underfilled": "present",
-          "cashier_vacancy": "present"
-        }
-      ]
-    },
-    {
-      "file": "front-cashier.mp4",
-      "state": "completed",
-      "frames": 3,
-      "seconds": 2.05,
-      "review_saved": true,
-      "statuses": [
-        {
-          "table_uncleared": "uncertain",
-          "bread_shelf_underfilled": "present",
-          "cashier_vacancy": "present"
-        },
-        {
-          "table_uncleared": "uncertain",
-          "bread_shelf_underfilled": "present",
-          "cashier_vacancy": "present"
-        },
-        {
-          "table_uncleared": "uncertain",
-          "bread_shelf_underfilled": "present",
-          "cashier_vacancy": "present"
-        }
-      ]
+      ],
+      "target_status": "present"
     }
   ],
   "model": "mobilenetv3-roi-v2",
-  "cashier_test_roi": "arbitrary central geometry for functional test only",
-  "producing_test": "tools/smoke.py",
+  "application_protocol": "proposal-two-stage-web-001",
   "environment": {
-    "installation": "new isolated venv; pip install -r requirements.txt; cached wheels reused where available",
     "python": "3.13.6",
     "system": "Darwin",
-    "macos": "26.6.2",
-    "architecture": "arm64",
-    "packages": {
+    "machine": "arm64",
+    "dependencies": {
       "torch": "2.14.1",
       "torchvision": "0.29.1",
       "ultralytics": "8.4.174",
       "Pillow": "12.3.0",
-      "numpy": "2.5.4",
-      "opencv-python": "5.0.0.93",
-      "polars": "2.1.0"
-    },
-    "scope": "fresh installation and local CPU inference; Windows/Linux not tested"
-  }
+      "numpy": "2.5.4"
+    }
+  },
+  "limitations": "Mask coverage has no suitable sample. Workwear references 02/09 are uncertain; 08/10 are known misses. No new accuracy estimate."
 }

@@ -4,7 +4,7 @@ DeviationLab extracts behavioral evidence from images and short videos of everyd
 
 The workflow uses trained YOLO detectors and MobileNetV3 classifiers. The English application runs in a browser with the included models and requires no API key. Researchers can use its observations to study where deviations occur and, with suitable sampling and linked records, how work changes over time.
 
-The repository includes monitoring footage with restricted reuse permissions. Public access to the repository does not grant permission to redistribute that media. See [access and media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
+The sample folder contains ten edited images and one eight-second dining-table video, reviewed for visible faces. The author authorized the video as a public sample. These are demonstrations, not an accuracy benchmark or a statement of ethics clearance. See [sample guidance](samples/README.md) and [media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
 
 ## Install and start
 
@@ -43,15 +43,15 @@ Installation requires internet access, Python and FFmpeg. Once installed, the ap
 
 ## Run a first analysis
 
-1. Select **Kitchen** and upload `samples/kitchen-mask.mp4`.
-2. Open **Sampling & cashier region** and choose **3** frames for a quick test. Click **Run analysis**. Uploading or playing the video alone does not run inference.
+1. Select **Kitchen** and upload `samples/demo-01-head-covering.png`.
+2. Click **Run analysis**. Uploading a file alone only creates a preview; an image is assessed once. To test your own permitted video, choose **3** frames under **Sampling & cashier region** for a quick run.
 3. Wait for **Analysis complete**. Inspect the findings, including those marked uncertain. Click a timestamp to inspect its frame and any available region box.
 4. Edit findings or add a missed finding if needed. Save the review before exporting if you want it recorded as a saved review.
 5. Click **Export JSON** or **Export CSV**. The files download to your browser's download folder.
 
 For **Front of house**, use the matching files in [samples/](samples/README.md). Draw the employee work area before testing cashier occupancy. Select the space behind the counter where the employee stands, not the whole store or customer area. Keep that region fixed for a stationary camera. Without a region, the cashier check reports that configuration is required.
 
-The bundled clips are walkthrough examples, not labeled accuracy tests. Their filenames name the check to inspect; they do not establish that a deviation occurs in every frame.
+The images have provisional visual references and recorded model results. Images 02 and 09 have uncertain workwear references; 08 and 10 are retained missed cases. There is no mask-coverage sample because the face-free views do not preserve the evidence needed for that check. A successful smoke test means processing completed, not that every judgment was correct.
 
 ## What the page supports
 
@@ -89,7 +89,7 @@ Exports retain the model findings and saved corrections separately. Researchers 
 | The page has no styling or stays on Loading | Use the HTTP address above with `python run.py` running, not a `file://` address. |
 | The browser cannot connect | Check the terminal for an error. Port 7891 may already be occupied. On macOS/Linux, `PORT=7892 python run.py` uses another port. |
 | A Python package cannot be found | Activate the same environment used to install `requirements.txt`. Check `python -m pip show torch torchvision ultralytics`. |
-| Video analysis fails | Check `ffmpeg` and `ffprobe`, file size, duration and decoding. Try a bundled JPG to separate video decoding from model inference. |
+| Video analysis fails | Check `ffmpeg` and `ffprobe`, file size, duration and decoding. Try a bundled PNG to separate video decoding from model inference. |
 | The engine is unavailable or a model hash fails | Run `python tools/verify.py`. Restore the complete release rather than downloading unrelated weights. |
 | The cashier check did not run | Draw the employee area and run the analysis again. |
 | Findings are uncertain or disagree with the image | Inspect the frame and region. Record a human correction; do not interpret uncertainty as compliance. |

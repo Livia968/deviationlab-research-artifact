@@ -15,7 +15,7 @@ The repository includes trained weights, ordered labels, transforms, thresholds,
 
 ## Inputs needed to repeat training
 
-Full training reproduction requires the original authorized ROI datasets, the original project layout, the cached torchvision ImageNet checkpoint and the intermediate v1 models/report used by the improvement script. These private inputs are not part of this repository. The six walkthrough clips are not replacements for them.
+Full training reproduction requires the original authorized ROI datasets, the original project layout, the cached torchvision ImageNet checkpoint and the intermediate v1 models/report used by the improvement script. These private inputs are not part of this repository. The demonstration images and video are not replacements for them.
 
 The scripts resolve paths relative to the original project and expect to sit in its `scripts/` directory. To repeat training, restore the authorized inputs and project layout, then check the dataset and output paths. The improvement script also requires scikit-learn. This dependency is needed for training, not for running the application.
 
