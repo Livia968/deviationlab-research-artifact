@@ -14,13 +14,14 @@ prototype verification. A completed execution does not establish recognition acc
 | Release integrity | File hashes and exact sample inventory checked | `SHA256SUMS.txt` and `python tools/verify.py` |
 
 The cashier region is documented in `README.md` and `tools/sample-cases.json`.
-Images 02 and 06 have uncertain visual references. Image 06 retains author-supplied
-face blur and is not mask-accuracy ground truth. Image 07 is the author's new
-head-covering example, replacing the earlier crop 01. The two added images were
+Images 02 and 03 have uncertain visual references. Image 02 retains author-supplied
+face blur and is not mask-accuracy ground truth. Image 01 is the author's new
+head-covering example, replacing the earlier head-covering crop. The two added images were
 processed only to remove annotation lines and, for 07, apply mild sharpening.
 Other checks in a scene are not validated merely because the intended check ran.
-The video tests sampling, not continuous event tracking. The sample numbers 06–07
-now refer to the final author-supplied files, not earlier versions in Git history.
+The video tests sampling, not continuous event tracking. The final set is numbered
+01–07, with individual checks first. Renaming preserved every media byte; recorded
+execution times and predictions remain those of the hash-identical files.
 
 Models, thresholds, application code and interface are unchanged by this sample
 replacement. The report records input hashes, predictions, environment, review

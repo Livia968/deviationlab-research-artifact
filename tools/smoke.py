@@ -78,7 +78,7 @@ def main():
               'model':'mobilenetv3-roi-v2', 'application_protocol':status['protocol'],
               'environment':{'python':platform.python_version(), 'system':platform.system(),
                  'machine':platform.machine(), 'dependencies':{n:version(n) for n in ('torch','torchvision','ultralytics','Pillow','numpy')}},
-              'limitations':'Mask image 06 has an author-blurred face and an uncertain reference, not mask-accuracy ground truth. Workwear reference 02 is uncertain. Image 07 retains background people; no anonymity claim. Samples are demonstrations, not an accuracy benchmark.'}
+              'limitations':'Mask image 02 has an author-blurred face and an uncertain reference, not mask-accuracy ground truth. Workwear reference 03 is uncertain. Image 01 retains background people; no anonymity claim. Samples are demonstrations, not an accuracy benchmark.'}
     if args.report:
         args.report.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report), flush=True)
