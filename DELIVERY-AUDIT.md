@@ -3,6 +3,11 @@
 This record separates the sample replacement on 29 October 2026 from the original
 prototype verification. A completed execution does not establish recognition accuracy.
 
+Sample images and videos were subsequently removed from the public repository
+at the author's request. The results below are historical records, not a claim
+that test media are distributed with the current version. Private local author
+copies are retained. The application and model weights were not changed.
+
 ## Current checks — 29 October 2026
 
 | Check | Result | Evidence |
@@ -11,9 +16,9 @@ prototype verification. A completed execution does not establish recognition acc
 | Actual image and video inference | PASS: six PNGs and one MP4; one frame per image and three sampled video frames | `functional-audit.json` |
 | Review persistence | PASS: a test review saved and read back for every sample | `functional-audit.json` |
 | Model identity and documented metrics | Six classifiers and three localizers checked against their registries | `python tools/verify.py` |
-| Release integrity | File hashes and exact sample inventory checked | `SHA256SUMS.txt` and `python tools/verify.py` |
+| Public release integrity | Public file hashes and historical test-record consistency checked; private media not checked | `SHA256SUMS.txt` and `python tools/verify.py` |
 
-The cashier region is documented in `README.md` and `tools/sample-cases.json`.
+The historical cashier region is documented in `tools/sample-cases.json`.
 Images 02 and 03 have uncertain visual references. Image 02 retains author-supplied
 face blur and is not mask-accuracy ground truth. Image 01 is the author's new
 head-covering example, replacing the earlier head-covering crop. The two added images were
@@ -46,11 +51,13 @@ To exercise the actual models, start `python run.py` in one terminal. In another
 terminal using the same environment, run:
 
 ```sh
-python tools/smoke.py
+python tools/smoke.py --samples-dir /path/to/authorized-private-samples
 ```
 
-The smoke test reads the seven cases in `tools/sample-cases.json`, checks their
-hashes, runs inference and saves a test review for each job. It creates job records
+This optional smoke test requires the exact privately held media; they are not
+included in the public repository. It reads the seven cases in
+`tools/sample-cases.json`, checks the supplied file hashes before contacting the
+local server, runs inference and saves a test review for each job. It creates job records
 in the server's data directory, not in this repository. It makes no paid API
 requests and refuses external URLs. For another local port use
 `--url http://127.0.0.1:7892`. Allow extra time for the first model load.

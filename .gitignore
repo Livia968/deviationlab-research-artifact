@@ -10,3 +10,5 @@ workspace/
 .work/
 .deviationlab-review/
 smoke-results.json
+# Keep author-owned demonstration media out of future public commits.
+/samples/

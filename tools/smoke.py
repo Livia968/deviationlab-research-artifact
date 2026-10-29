@@ -20,8 +20,15 @@ class NoRedirect(HTTPRedirectHandler):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--url', default='http://127.0.0.1:7891')
+    parser.add_argument('--samples-dir', required=True, type=Path,
+                        help='Private local folder containing the seven authorized test media; not included publicly')
     parser.add_argument('--report', type=Path, help='Optional JSON verification report; overwrites the specified file')
     args = parser.parse_args()
+    sample_cases = json.loads((ROOT / 'tools/sample-cases.json').read_text())
+    for sample in sample_cases:
+        path = args.samples_dir / sample['file']
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != sample['sha256']:
+            parser.error('Private test media missing or changed: ' + sample['file'])
     parts = urlsplit(args.url)
     if (parts.scheme != 'http' or parts.hostname not in ('127.0.0.1', 'localhost')
             or parts.username or parts.password or parts.query or parts.fragment or parts.path not in ('','/')):
@@ -35,9 +42,9 @@ def main():
     status = request('/api/status')
     assert status['engines']['yolo']['available'] and status['protocol'] == 'proposal-two-stage-web-001'
     cases = []
-    for sample in json.loads((ROOT / 'tools/sample-cases.json').read_text()):
+    for sample in sample_cases:
         assert Path(sample['file']).name == sample['file']
-        path = ROOT / 'samples' / sample['file']
+        path = args.samples_dir / sample['file']
         media = path.read_bytes()
         digest = hashlib.sha256(media).hexdigest()
         assert digest == sample['sha256'], path.name

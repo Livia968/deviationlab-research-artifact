@@ -36,15 +36,10 @@ def main():
     samples = json.loads((ROOT / 'tools/sample-cases.json').read_text())
     assert len(samples) == 7
     assert len({row['file'] for row in samples}) == len(samples)
-    media = {p.name for p in (ROOT / 'samples').iterdir()
-             if p.suffix.lower() in ('.png', '.jpg', '.jpeg', '.mp4', '.mov')}
-    assert media == {row['file'] for row in samples}
+    media = {row['file'] for row in samples}
     assert all(Path(row['file']).name == row['file'] for row in samples)
     assert sum(row['file'].endswith('.png') for row in samples) == 6
-    assert {p.name for p in (ROOT / 'samples').iterdir() if p.is_file()} == media
     assert sum(row['file'].endswith('.mp4') for row in samples) == 1
-    for row in samples:
-        assert digest(ROOT / 'samples' / row['file']) == row['sha256']
     report = json.loads((ROOT / 'functional-audit.json').read_text())
     assert report['status'] == 'pass' and len(report['cases']) == len(samples)
     cases = {row['file']: row for row in report['cases']}
@@ -52,7 +47,8 @@ def main():
     for row in samples:
         assert cases[row['file']]['sha256'] == row['sha256']
         assert cases[row['file']]['state'] == 'completed' and cases[row['file']]['review_saved']
-    print(f'PASS: {checked} file hashes, 6 classifiers, 3 localizers, 6 images, 1 reviewed video and saved development metrics.')
+    print(f'PASS: {checked} file hashes, 6 classifiers, 3 localizers, historical test-record consistency and saved development metrics.')
+    print('Sample media are not included in the public repository; their availability and bytes were not checked.')
     print('This is an integrity check, not a recognition-accuracy test.')
 
 if __name__ == '__main__':
