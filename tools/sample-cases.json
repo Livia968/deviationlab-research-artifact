@@ -1,0 +1,154 @@
+[
+  {
+    "file": "demo-02-workwear.png",
+    "scene": "kitchen",
+    "target": "uniform_absent",
+    "visual_reference": "uncertain",
+    "note": "Plain black shirt, no visible apron straps or protective coat. Rear view cannot conclusively exclude front-only clothing or define the store uniform policy; author adjudication required.",
+    "rights": "Author-supplied demonstration derivative; no unrestricted reuse license or IRB clearance is asserted",
+    "sha256": "eafff334683e9c04c7cb27acdfd32be7921ac2d9dbc2f563097953ab6b68eb87",
+    "source_sha256": "99b991fdaef8ce70dc7669e52c983f1003838c7758a9287c82ac769201a3fc43",
+    "crop_source_pixels": [
+      200,
+      80,
+      810,
+      625
+    ],
+    "image_size": [
+      610,
+      545
+    ],
+    "cashier_roi": null,
+    "purpose": "Readability-selected demonstration, not an accuracy benchmark",
+    "privacy": "Native crop reviewed: no visible face; large store signage and timestamp excluded. Context may still identify a location or person.",
+    "processing": "Native-resolution crop; local color-selected box repair where present; mild 0.15 sharpening; no upsampling, generative reconstruction or opaque fill"
+  },
+  {
+    "file": "demo-03-table-clearance.png",
+    "scene": "front",
+    "target": "table_uncleared",
+    "visual_reference": "present",
+    "note": "Tray and discarded tissues remain on the upper-left dining table. No person visible.",
+    "rights": "Author-supplied demonstration derivative; no unrestricted reuse license or IRB clearance is asserted",
+    "sha256": "5483058690ba97b1e798955885846fe797ce9066d45dc8e704a10810e99d2bcc",
+    "source_sha256": "1f1111a17405cff03a0b887f1e81cda0717b9b4f6fab6aaff48a743165eb5217",
+    "crop_source_pixels": [
+      0,
+      110,
+      1000,
+      630
+    ],
+    "image_size": [
+      1000,
+      520
+    ],
+    "cashier_roi": null,
+    "purpose": "Readability-selected demonstration, not an accuracy benchmark",
+    "privacy": "Native crop reviewed: no visible face; large store signage and timestamp excluded. Context may still identify a location or person.",
+    "processing": "Native-resolution crop; local color-selected box repair where present; mild 0.15 sharpening; no upsampling, generative reconstruction or opaque fill"
+  },
+  {
+    "file": "demo-04-bread-display.png",
+    "scene": "front",
+    "target": "bread_shelf_underfilled",
+    "visual_reference": "present",
+    "note": "An empty middle shelf and substantial display gaps. No person visible.",
+    "rights": "Author-supplied demonstration derivative; no unrestricted reuse license or IRB clearance is asserted",
+    "sha256": "4f620e36a70eee28c8aeae817f31b1eaa40d8437a5203ef7b76a323168c18c37",
+    "source_sha256": "e87759602d0b1bc4987135b9f5c6b3806fd82b189f85a9205f11a96b486a44d2",
+    "crop_source_pixels": [
+      100,
+      172,
+      740,
+      620
+    ],
+    "image_size": [
+      640,
+      448
+    ],
+    "cashier_roi": null,
+    "purpose": "Readability-selected demonstration, not an accuracy benchmark",
+    "privacy": "Native crop reviewed: no visible face; large store signage and timestamp excluded. Context may still identify a location or person.",
+    "processing": "Native-resolution crop; local color-selected box repair where present; mild 0.15 sharpening; no upsampling, generative reconstruction or opaque fill"
+  },
+  {
+    "file": "demo-05-cashier-area.png",
+    "scene": "front",
+    "target": "cashier_vacancy",
+    "visual_reference": "present",
+    "note": "Visible employee-side space behind the counter is empty; customer is back-facing. A still cannot establish a continuous vacancy or rule out an occluded employee.",
+    "rights": "Author-supplied demonstration derivative; no unrestricted reuse license or IRB clearance is asserted",
+    "sha256": "0c8b2d8325b94f535d76855f1003182fd1d083912af87e6301f88a43a4adb414",
+    "source_sha256": "f1b5adc48962d8efbfe70ee90229f4eb1464fa478c347d23b6696878f4610de9",
+    "crop_source_pixels": [
+      70,
+      80,
+      640,
+      620
+    ],
+    "image_size": [
+      570,
+      540
+    ],
+    "cashier_roi": [
+      0.012,
+      0,
+      0.978,
+      0.425
+    ],
+    "purpose": "Readability-selected demonstration, not an accuracy benchmark",
+    "privacy": "Native crop reviewed: no visible face; large store signage and timestamp excluded. Context may still identify a location or person.",
+    "processing": "Native-resolution crop; local color-selected box repair where present; mild 0.15 sharpening; no upsampling, generative reconstruction or opaque fill"
+  },
+  {
+    "file": "demo-06-mask-coverage-blurred.png",
+    "scene": "kitchen",
+    "target": "mask_uncovered",
+    "visual_reference": "uncertain",
+    "note": "Face was blurred by the author before receipt. Mask coverage cannot be reliably adjudicated from this image.",
+    "cashier_roi": null,
+    "sha256": "d96391c95137bf77be6ad44ec15d6938b654e6e4b0373492b1c90a4a2ac606cf",
+    "source_sha256": "cd12cc9215b4a79df6cb1b9cedbd1e3da3ae43b1e845e53725b6af5daf03bb82",
+    "image_size": [
+      556,
+      308
+    ],
+    "processing": "Narrow red-annotation inpainting, no generative reconstruction or upsampling. Original face blur retained; no sharpening.",
+    "privacy": "No claim of anonymity or IRB clearance. Clothing, background people and location may remain identifiable.",
+    "rights": "Author explicitly requested public inclusion; repository access does not grant unrestricted media reuse.",
+    "purpose": "Functional demonstration, not an accuracy benchmark"
+  },
+  {
+    "file": "demo-07-head-covering.png",
+    "scene": "kitchen",
+    "target": "cap_absent",
+    "visual_reference": "present",
+    "note": "Main back-facing person has uncovered hair. Background people remain; this is not a guaranteed face-free image.",
+    "cashier_roi": null,
+    "sha256": "6deb81a1677bdbc899749ac5dd9b98159afd9828c0dc71a28ccc3de853c0d1e5",
+    "source_sha256": "5e41fef76d11ec52001892fc879b2a0b0d57134c7173b33c9a719ca043e9af60",
+    "image_size": [
+      554,
+      308
+    ],
+    "processing": "Narrow red-annotation inpainting, no generative reconstruction or upsampling. Mild 0.18 sharpening; background face area excluded.",
+    "privacy": "No claim of anonymity or IRB clearance. Clothing, background people and location may remain identifiable.",
+    "rights": "Author explicitly requested public inclusion; repository access does not grant unrestricted media reuse.",
+    "purpose": "Functional demonstration, not an accuracy benchmark"
+  },
+  {
+    "file": "demo-11-table-clearance.mp4",
+    "sha256": "dd3afad285dd599ab65a84903e59c41b1de66d92fa5836fa539befcbee0bfb01",
+    "scene": "front",
+    "target": "table_uncleared",
+    "visual_reference": "present",
+    "cashier_roi": null,
+    "note": "Uncleared items on a dining table; inspect each sampled frame. Other checks are not reference-labeled.",
+    "purpose": "Video processing demonstration; not an accuracy benchmark",
+    "privacy": "All 64 frames reviewed: no visible people or faces found. Location and timestamp remain visible.",
+    "rights": "Author confirmed rights and explicitly authorized this clip as a public sample on 2026-10-29; no unrestricted reuse license or IRB clearance asserted",
+    "duration_seconds": 8,
+    "frames_reviewed": 64,
+    "audio": false
+  }
+]

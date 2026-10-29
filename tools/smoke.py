@@ -35,7 +35,7 @@ def main():
     status = request('/api/status')
     assert status['engines']['yolo']['available'] and status['protocol'] == 'proposal-two-stage-web-001'
     cases = []
-    for sample in json.loads((ROOT / 'samples/manifest.json').read_text()):
+    for sample in json.loads((ROOT / 'tools/sample-cases.json').read_text()):
         assert Path(sample['file']).name == sample['file']
         path = ROOT / 'samples' / sample['file']
         media = path.read_bytes()
@@ -78,7 +78,7 @@ def main():
               'model':'mobilenetv3-roi-v2', 'application_protocol':status['protocol'],
               'environment':{'python':platform.python_version(), 'system':platform.system(),
                  'machine':platform.machine(), 'dependencies':{n:version(n) for n in ('torch','torchvision','ultralytics','Pillow','numpy')}},
-              'limitations':'Mask coverage has no suitable sample. Workwear reference 02 is uncertain. Crops were selected for readability and privacy, not prediction success. No new accuracy estimate.'}
+              'limitations':'Mask image 06 has an author-blurred face and an uncertain reference, not mask-accuracy ground truth. Workwear reference 02 is uncertain. Image 07 retains background people; no anonymity claim. Samples are demonstrations, not an accuracy benchmark.'}
     if args.report:
         args.report.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report), flush=True)

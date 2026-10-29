@@ -8,18 +8,19 @@ prototype verification. A completed execution does not establish recognition acc
 | Check | Result | Evidence |
 |---|---|---|
 | Workflow and server tests | PASS: 5 contract tests and 19 server tests | `proposal-pipeline/tests/` and `web/tests/` |
-| Actual image and video inference | PASS: five cropped PNGs and one MP4; one frame per image and three sampled video frames | `functional-audit.json` |
+| Actual image and video inference | PASS: six PNGs and one MP4; one frame per image and three sampled video frames | `functional-audit.json` |
 | Review persistence | PASS: a test review saved and read back for every sample | `functional-audit.json` |
 | Model identity and documented metrics | Six classifiers and three localizers checked against their registries | `python tools/verify.py` |
 | Release integrity | File hashes and exact sample inventory checked | `SHA256SUMS.txt` and `python tools/verify.py` |
 
-The cashier rectangles are the employee areas documented in `samples/README.md`.
-Image 02 has an uncertain visual reference; cashier image 05 returned uncertain.
-The earlier low-resolution images
-06–10 were removed for visual quality, including the previously documented misses
-08 and 10; this selection is not an accuracy estimate. Other checks in a scene are not validated merely because the intended check
-ran. The video tests sampling, not continuous event tracking. There is no suitable
-mask-coverage sample in this privacy-reviewed set.
+The cashier region is documented in `README.md` and `tools/sample-cases.json`.
+Images 02 and 06 have uncertain visual references. Image 06 retains author-supplied
+face blur and is not mask-accuracy ground truth. Image 07 is the author's new
+head-covering example, replacing the earlier crop 01. The two added images were
+processed only to remove annotation lines and, for 07, apply mild sharpening.
+Other checks in a scene are not validated merely because the intended check ran.
+The video tests sampling, not continuous event tracking. The sample numbers 06–07
+now refer to the final author-supplied files, not earlier versions in Git history.
 
 Models, thresholds, application code and interface are unchanged by this sample
 replacement. The report records input hashes, predictions, environment, review
@@ -47,7 +48,7 @@ terminal using the same environment, run:
 python tools/smoke.py
 ```
 
-The smoke test reads the six files in `samples/manifest.json`, checks their
+The smoke test reads the seven cases in `tools/sample-cases.json`, checks their
 hashes, runs inference and saves a test review for each job. It creates job records
 in the server's data directory, not in this repository. It makes no paid API
 requests and refuses external URLs. For another local port use

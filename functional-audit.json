@@ -1,27 +1,8 @@
 {
   "status": "pass",
   "scope": "functional integration, not accuracy validation",
-  "tested_at_utc": "2026-10-29T01:44:35.137108+00:00",
+  "tested_at_utc": "2026-10-29T02:50:26.839270+00:00",
   "cases": [
-    {
-      "file": "demo-01-head-covering.png",
-      "sha256": "7b489a3f3c8e370fe746121d5c87f76f2f08770fb92af45c4ae1804945ac7ba9",
-      "state": "completed",
-      "frames": 1,
-      "seconds": 2.53,
-      "review_saved": true,
-      "cashier_roi": null,
-      "target": "cap_absent",
-      "visual_reference": "present",
-      "statuses": [
-        {
-          "cap_absent": "present",
-          "mask_uncovered": "absent",
-          "uniform_absent": "uncertain"
-        }
-      ],
-      "target_status": "present"
-    },
     {
       "file": "demo-02-workwear.png",
       "sha256": "eafff334683e9c04c7cb27acdfd32be7921ac2d9dbc2f563097953ab6b68eb87",
@@ -46,7 +27,7 @@
       "sha256": "5483058690ba97b1e798955885846fe797ce9066d45dc8e704a10810e99d2bcc",
       "state": "completed",
       "frames": 1,
-      "seconds": 1.02,
+      "seconds": 1.04,
       "review_saved": true,
       "cashier_roi": null,
       "target": "table_uncleared",
@@ -104,6 +85,44 @@
       "target_status": "uncertain"
     },
     {
+      "file": "demo-06-mask-coverage-blurred.png",
+      "sha256": "d96391c95137bf77be6ad44ec15d6938b654e6e4b0373492b1c90a4a2ac606cf",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 0.52,
+      "review_saved": true,
+      "cashier_roi": null,
+      "target": "mask_uncovered",
+      "visual_reference": "uncertain",
+      "statuses": [
+        {
+          "cap_absent": "absent",
+          "mask_uncovered": "present",
+          "uniform_absent": "absent"
+        }
+      ],
+      "target_status": "present"
+    },
+    {
+      "file": "demo-07-head-covering.png",
+      "sha256": "6deb81a1677bdbc899749ac5dd9b98159afd9828c0dc71a28ccc3de853c0d1e5",
+      "state": "completed",
+      "frames": 1,
+      "seconds": 1.02,
+      "review_saved": true,
+      "cashier_roi": null,
+      "target": "cap_absent",
+      "visual_reference": "present",
+      "statuses": [
+        {
+          "cap_absent": "present",
+          "mask_uncovered": "present",
+          "uniform_absent": "uncertain"
+        }
+      ],
+      "target_status": "present"
+    },
+    {
       "file": "demo-11-table-clearance.mp4",
       "sha256": "dd3afad285dd599ab65a84903e59c41b1de66d92fa5836fa539befcbee0bfb01",
       "state": "completed",
@@ -147,5 +166,5 @@
       "numpy": "2.5.4"
     }
   },
-  "limitations": "No mask-coverage sample. Workwear reference 02 is uncertain; cashier crop 05 returned uncertain. Selection was based on readability/privacy, not success. No new accuracy estimate."
+  "limitations": "Mask image 06 has an author-blurred face and an uncertain reference, not mask-accuracy ground truth. Workwear reference 02 is uncertain. Image 07 retains background people; no anonymity claim. Samples are demonstrations, not an accuracy benchmark."
 }

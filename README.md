@@ -4,7 +4,7 @@ DeviationLab extracts behavioral evidence from images and short videos of everyd
 
 The workflow uses trained YOLO detectors and MobileNetV3 classifiers. The English application runs in a browser with the included models and requires no API key. Researchers can use its observations to study where deviations occur and, with suitable sampling and linked records, how work changes over time.
 
-The sample folder contains five cropped images and one eight-second dining-table video, reviewed for visible faces. The author approved fewer, clearer images and authorized the video as a public sample. These are demonstrations, not an accuracy benchmark or a statement of ethics clearance. See [sample guidance](samples/README.md) and [media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
+The sample folder contains six images and one eight-second dining-table video. It contains media only; test settings and provisional visual references are in [tools/sample-cases.json](tools/sample-cases.json). Image 06 retains the author's face blur, which limits mask assessment. Image 07 shows an uncovered head from behind and retains background people. These demonstrations are not an accuracy benchmark or a statement of anonymity or ethics clearance. See [media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
 
 ## Install and start
 
@@ -43,13 +43,13 @@ Installation requires internet access, Python and FFmpeg. Once installed, the ap
 
 ## Run a first analysis
 
-1. Select **Kitchen** and upload `samples/demo-01-head-covering.png`.
+1. Select **Kitchen** and upload `samples/demo-07-head-covering.png`.
 2. Click **Run analysis**. Uploading a file alone only creates a preview; an image is assessed once. To test your own permitted video, choose **3** frames under **Sampling & cashier region** for a quick run.
 3. Wait for **Analysis complete**. Inspect the findings, including those marked uncertain. Click a timestamp to inspect its frame and any available region box.
 4. Edit findings or add a missed finding if needed. Save the review before exporting if you want it recorded as a saved review.
 5. Click **Export JSON** or **Export CSV**. The files download to your browser's download folder.
 
-For **Front of house**, use the matching files in [samples/](samples/README.md). Draw the employee work area before testing cashier occupancy. Select the space behind the counter where the employee stands, not the whole store or customer area. Keep that region fixed for a stationary camera. Without a region, the cashier check reports that configuration is required.
+For **Front of house**, use images 03–05 or the table-clearance video in [samples/](samples/). Images 02, 06 and 07 use **Kitchen**. Draw the employee work area before testing cashier occupancy. Select the space behind the counter where the employee stands, not the whole store or customer area. Keep that region fixed for a stationary camera. Without a region, the cashier check reports that configuration is required. The test region for image 05 is `[0.012, 0, 0.978, 0.425]`, expressed as normalized left, top, right and bottom coordinates.
 
 The images have provisional visual references and recorded model results. Image 02 has an uncertain workwear reference. The former low-resolution images 06–10 were removed for visual quality, not because of their predictions. There is no mask-coverage sample because the face-free views do not preserve the evidence needed for that check. A successful smoke test means processing completed, not that every judgment was correct.
 
