@@ -4,7 +4,7 @@ DeviationLab extracts behavioral evidence from images and short videos of everyd
 
 The workflow uses trained YOLO detectors and MobileNetV3 classifiers. The English application runs in a browser with the included models and requires no API key. Researchers can use its observations to study where deviations occur and, with suitable sampling and linked records, how work changes over time.
 
-The sample folder contains ten edited images and one eight-second dining-table video, reviewed for visible faces. The author authorized the video as a public sample. These are demonstrations, not an accuracy benchmark or a statement of ethics clearance. See [sample guidance](samples/README.md) and [media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
+The sample folder contains five cropped images and one eight-second dining-table video, reviewed for visible faces. The author approved fewer, clearer images and authorized the video as a public sample. These are demonstrations, not an accuracy benchmark or a statement of ethics clearance. See [sample guidance](samples/README.md) and [media restrictions](REVIEW-NOTES.md#access-and-media-restrictions).
 
 ## Install and start
 
@@ -51,7 +51,7 @@ Installation requires internet access, Python and FFmpeg. Once installed, the ap
 
 For **Front of house**, use the matching files in [samples/](samples/README.md). Draw the employee work area before testing cashier occupancy. Select the space behind the counter where the employee stands, not the whole store or customer area. Keep that region fixed for a stationary camera. Without a region, the cashier check reports that configuration is required.
 
-The images have provisional visual references and recorded model results. Images 02 and 09 have uncertain workwear references; 08 and 10 are retained missed cases. There is no mask-coverage sample because the face-free views do not preserve the evidence needed for that check. A successful smoke test means processing completed, not that every judgment was correct.
+The images have provisional visual references and recorded model results. Image 02 has an uncertain workwear reference. The former low-resolution images 06–10 were removed for visual quality, not because of their predictions. There is no mask-coverage sample because the face-free views do not preserve the evidence needed for that check. A successful smoke test means processing completed, not that every judgment was correct.
 
 ## What the page supports
 

@@ -78,7 +78,7 @@ def main():
               'model':'mobilenetv3-roi-v2', 'application_protocol':status['protocol'],
               'environment':{'python':platform.python_version(), 'system':platform.system(),
                  'machine':platform.machine(), 'dependencies':{n:version(n) for n in ('torch','torchvision','ultralytics','Pillow','numpy')}},
-              'limitations':'Mask coverage has no suitable sample. Workwear references 02/09 are uncertain; 08/10 are known misses. No new accuracy estimate.'}
+              'limitations':'Mask coverage has no suitable sample. Workwear reference 02 is uncertain. Crops were selected for readability and privacy, not prediction success. No new accuracy estimate.'}
     if args.report:
         args.report.write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report), flush=True)

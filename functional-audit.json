@@ -1,14 +1,14 @@
 {
   "status": "pass",
   "scope": "functional integration, not accuracy validation",
-  "tested_at_utc": "2026-10-29T01:25:07.435556+00:00",
+  "tested_at_utc": "2026-10-29T01:44:35.137108+00:00",
   "cases": [
     {
       "file": "demo-01-head-covering.png",
-      "sha256": "c360b71d2e43be48426aeffefad684e382e1a792bd914cb13496bc08fc9525c9",
+      "sha256": "7b489a3f3c8e370fe746121d5c87f76f2f08770fb92af45c4ae1804945ac7ba9",
       "state": "completed",
       "frames": 1,
-      "seconds": 1.04,
+      "seconds": 2.53,
       "review_saved": true,
       "cashier_roi": null,
       "target": "cap_absent",
@@ -24,10 +24,10 @@
     },
     {
       "file": "demo-02-workwear.png",
-      "sha256": "881cd12a0292baa6b4736a335d5f98a8d694aa7b252e2fcc7e551abf93712256",
+      "sha256": "eafff334683e9c04c7cb27acdfd32be7921ac2d9dbc2f563097953ab6b68eb87",
       "state": "completed",
       "frames": 1,
-      "seconds": 1.53,
+      "seconds": 1.02,
       "review_saved": true,
       "cashier_roi": null,
       "target": "uniform_absent",
@@ -43,10 +43,10 @@
     },
     {
       "file": "demo-03-table-clearance.png",
-      "sha256": "545aaacb60393e9f29d2888b4c59d4570d3fccb6de74bfc7eb223573a980ef74",
+      "sha256": "5483058690ba97b1e798955885846fe797ce9066d45dc8e704a10810e99d2bcc",
       "state": "completed",
       "frames": 1,
-      "seconds": 1.56,
+      "seconds": 1.02,
       "review_saved": true,
       "cashier_roi": null,
       "target": "table_uncleared",
@@ -62,10 +62,10 @@
     },
     {
       "file": "demo-04-bread-display.png",
-      "sha256": "52ab00e52729c73930f520474f12bd9d30fe749e56ea8acc321c145a1794cdb0",
+      "sha256": "4f620e36a70eee28c8aeae817f31b1eaa40d8437a5203ef7b76a323168c18c37",
       "state": "completed",
       "frames": 1,
-      "seconds": 1.05,
+      "seconds": 1.03,
       "review_saved": true,
       "cashier_roi": null,
       "target": "bread_shelf_underfilled",
@@ -81,16 +81,16 @@
     },
     {
       "file": "demo-05-cashier-area.png",
-      "sha256": "1af638640bad2a70ebba18fb885d7394143de700a6a95c18f236226c08d45ffb",
+      "sha256": "0c8b2d8325b94f535d76855f1003182fd1d083912af87e6301f88a43a4adb414",
       "state": "completed",
       "frames": 1,
-      "seconds": 1.04,
+      "seconds": 1.03,
       "review_saved": true,
       "cashier_roi": [
-        0.06,
-        0.1,
-        0.49,
-        0.43
+        0.012,
+        0,
+        0.978,
+        0.425
       ],
       "target": "cashier_vacancy",
       "visual_reference": "present",
@@ -98,117 +98,17 @@
         {
           "table_uncleared": "uncertain",
           "bread_shelf_underfilled": "present",
-          "cashier_vacancy": "present"
-        }
-      ],
-      "target_status": "present"
-    },
-    {
-      "file": "demo-06-bread-display.png",
-      "sha256": "1a7586c1b864c435dd5fda5bf37cd1f270f883abe8d6d92e1aed087d15fd04f6",
-      "state": "completed",
-      "frames": 1,
-      "seconds": 1.03,
-      "review_saved": true,
-      "cashier_roi": null,
-      "target": "bread_shelf_underfilled",
-      "visual_reference": "present",
-      "statuses": [
-        {
-          "table_uncleared": "uncertain",
-          "bread_shelf_underfilled": "present",
-          "cashier_vacancy": "not_applicable"
-        }
-      ],
-      "target_status": "present"
-    },
-    {
-      "file": "demo-07-cashier-area.png",
-      "sha256": "4af3bf6b800c7a17fdecb22a96729b444b299ae40603858889563b4cf03a34ea",
-      "state": "completed",
-      "frames": 1,
-      "seconds": 1.03,
-      "review_saved": true,
-      "cashier_roi": [
-        0.11,
-        0.14,
-        0.87,
-        0.41
-      ],
-      "target": "cashier_vacancy",
-      "visual_reference": "present",
-      "statuses": [
-        {
-          "table_uncleared": "uncertain",
-          "bread_shelf_underfilled": "present",
-          "cashier_vacancy": "present"
-        }
-      ],
-      "target_status": "present"
-    },
-    {
-      "file": "demo-08-head-covering.png",
-      "sha256": "3692cbec5419a28e00a22512a32fe2badc1321ec79408b7b3f953f763326da74",
-      "state": "completed",
-      "frames": 1,
-      "seconds": 1.03,
-      "review_saved": true,
-      "cashier_roi": null,
-      "target": "cap_absent",
-      "visual_reference": "present",
-      "statuses": [
-        {
-          "cap_absent": "absent",
-          "mask_uncovered": "uncertain",
-          "uniform_absent": "uncertain"
-        }
-      ],
-      "target_status": "absent"
-    },
-    {
-      "file": "demo-09-workwear.png",
-      "sha256": "daf3142121334642d139c80b0b67e5d417fc1a8b74d0701961f7c2bcd5033532",
-      "state": "completed",
-      "frames": 1,
-      "seconds": 0.52,
-      "review_saved": true,
-      "cashier_roi": null,
-      "target": "uniform_absent",
-      "visual_reference": "uncertain",
-      "statuses": [
-        {
-          "cap_absent": "absent",
-          "mask_uncovered": "absent",
-          "uniform_absent": "uncertain"
+          "cashier_vacancy": "uncertain"
         }
       ],
       "target_status": "uncertain"
-    },
-    {
-      "file": "demo-10-table-clearance.png",
-      "sha256": "cfb020aadc117ba3fc3f2adab7de7923cc56966de5f07d108aa79b0cc5507d3b",
-      "state": "completed",
-      "frames": 1,
-      "seconds": 0.51,
-      "review_saved": true,
-      "cashier_roi": null,
-      "target": "table_uncleared",
-      "visual_reference": "present",
-      "statuses": [
-        {
-          "table_uncleared": "absent",
-          "bread_shelf_underfilled": "uncertain",
-          "cashier_vacancy": "not_applicable"
-        }
-      ],
-      "target_status": "absent"
     },
     {
       "file": "demo-11-table-clearance.mp4",
       "sha256": "dd3afad285dd599ab65a84903e59c41b1de66d92fa5836fa539befcbee0bfb01",
       "state": "completed",
       "frames": 3,
-      "seconds": 1.52,
+      "seconds": 1.53,
       "review_saved": true,
       "cashier_roi": null,
       "target": "table_uncleared",
@@ -247,5 +147,5 @@
       "numpy": "2.5.4"
     }
   },
-  "limitations": "Mask coverage has no suitable sample. Workwear references 02/09 are uncertain; 08/10 are known misses. No new accuracy estimate."
+  "limitations": "No mask-coverage sample. Workwear reference 02 is uncertain; cashier crop 05 returned uncertain. Selection was based on readability/privacy, not success. No new accuracy estimate."
 }

@@ -34,13 +34,13 @@ def main():
     for spec in locators.values():
         assert digest(ROOT / 'localizers' / spec['file']) == spec['sha256']
     samples = json.loads((ROOT / 'samples/manifest.json').read_text())
-    assert len(samples) == 11
+    assert len(samples) == 6
     assert len({row['file'] for row in samples}) == len(samples)
     media = {p.name for p in (ROOT / 'samples').iterdir()
              if p.suffix.lower() in ('.png', '.jpg', '.jpeg', '.mp4', '.mov')}
     assert media == {row['file'] for row in samples}
     assert all(Path(row['file']).name == row['file'] for row in samples)
-    assert sum(row['file'].endswith('.png') for row in samples) == 10
+    assert sum(row['file'].endswith('.png') for row in samples) == 5
     assert sum(row['file'].endswith('.mp4') for row in samples) == 1
     for row in samples:
         assert digest(ROOT / 'samples' / row['file']) == row['sha256']
@@ -51,7 +51,7 @@ def main():
     for row in samples:
         assert cases[row['file']]['sha256'] == row['sha256']
         assert cases[row['file']]['state'] == 'completed' and cases[row['file']]['review_saved']
-    print(f'PASS: {checked} file hashes, 6 classifiers, 3 localizers, 10 edited images, 1 reviewed video and saved development metrics.')
+    print(f'PASS: {checked} file hashes, 6 classifiers, 3 localizers, 5 cropped images, 1 reviewed video and saved development metrics.')
     print('This is an integrity check, not a recognition-accuracy test.')
 
 if __name__ == '__main__':
